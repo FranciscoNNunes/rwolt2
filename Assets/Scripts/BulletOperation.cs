@@ -23,6 +23,13 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            heartSystem vidaPlayer = collision.GetComponent<heartSystem>();
+
+            // Se o script de vida não estiver na raiz do Player, tenta buscar nos filhos ou pais
+            if (vidaPlayer == null)
+            {
+                vidaPlayer = collision.GetComponentInChildren<heartSystem>();
+            }
 
             Destroy(gameObject);
         }
