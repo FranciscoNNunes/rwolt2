@@ -12,6 +12,19 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.left);
+        transform.Translate(Vector2.left * bulletVeloticy * Time.deltaTime);
+        if (transform.position.x < -7)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+
+            Destroy(gameObject);
+        }
     }
 }
