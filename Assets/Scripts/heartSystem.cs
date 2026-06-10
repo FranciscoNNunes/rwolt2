@@ -22,11 +22,11 @@ using UnityEngine.UI;
         HealthLogic();
        
     }
-    void HealthLogic() 
+    void HealthLogic()
     {
 
 
-        if(vida > vidaMaxima)
+        if (vida > vidaMaxima)
         {
             vida = vidaMaxima;
         }
@@ -34,7 +34,7 @@ using UnityEngine.UI;
 
         for (int i = 0; i < coracao.Length; i++)
         {
-            if (i< vida)
+            if (i < vida)
             {
                 coracao[i].sprite = cheio;
 
@@ -53,6 +53,5 @@ using UnityEngine.UI;
                 coracao[i].enabled = false;
             }
         }
-        
     }
 }
