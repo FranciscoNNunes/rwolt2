@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
     public class heartSystem : MonoBehaviour
 {
+    
     public int vida;
     public int vidaMaxima;
 
@@ -52,6 +53,6 @@ using UnityEngine.UI;
                 coracao[i].enabled = false;
             }
         }
-    
+        
     }
 }
