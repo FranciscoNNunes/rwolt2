@@ -45,5 +45,8 @@ TagManager:
   - name: Lobo
     uniqueID: 2631824885
     locked: 0
+  - name: PausePainel
+    uniqueID: 596447703
+    locked: 0
   m_RenderingLayers:
   - Default
