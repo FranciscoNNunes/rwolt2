@@ -1,4 +1,5 @@
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class mainMenuMenagger : MonoBehaviour
@@ -20,9 +21,13 @@ public class mainMenuMenagger : MonoBehaviour
         painelOptions.SetActive(false);
         painelMainMenu.SetActive(true);
     }
-    public void SairDoJogo()
+    public void BTN_Quit()
     {
-        Debug.Log("Quit");
         Application.Quit();
+#if UNITY_EDITOR
+
+        EditorApplication.ExitPlaymode();
+#endif
+
     }
 }
