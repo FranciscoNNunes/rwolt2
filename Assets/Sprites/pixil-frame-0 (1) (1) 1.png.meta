@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 094d8ace486d1e94bbb99c3c2d9f1b3f
+guid: 2d01038134afce945a5069bd0294d05d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 206092993738562676
-    second: super-hypher-wolf-ma-pixilart_0
+      213: -4743451953001699559
+    second: pixil-frame-0 (1) (1) 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 150
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: super-hypher-wolf-ma-pixilart_0
+      name: pixil-frame-0 (1) (1) 1_0
       rect:
         serializedVersion: 2
-        x: 30
-        y: 48
-        width: 38
-        height: 52
+        x: 3699
+        y: 4899
+        width: 4202
+        height: 5101
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 47cdb726c703cd200800000000000000
-      internalID: 206092993738562676
+      spriteID: 9176334a49fdb2eb0800000000000000
+      internalID: -4743451953001699559
       vertices: []
       indices: 
       edges: []
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      super-hypher-wolf-ma-pixilart_0: 206092993738562676
+      pixil-frame-0 (1) (1) 1_0: -4743451953001699559
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
