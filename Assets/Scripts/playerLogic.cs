@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private int totaljump;
 
+    [SerializeField] private Animator Anim;
+
     private int jumpLes;
 
     private bool isgroundCheck;
@@ -36,6 +38,8 @@ public class Player : MonoBehaviour
         GetInputMove();
         DirectionCheck();
         CanJump();
+        MoveAnim();
+        JumpAnim();
     }
 
     private void FixedUpdate()
@@ -93,6 +97,10 @@ public class Player : MonoBehaviour
     {
         rb2d.linearVelocity = new Vector2(inputDirection * moveSpeed,rb2d.linearVelocity.y);
     }
+    void MoveAnim()
+    {
+        Anim.SetFloat("HorizontalAnim",rb2d.linearVelocity.x);
+    }
     void Jump() 
     {
         if (canJump)
@@ -100,9 +108,12 @@ public class Player : MonoBehaviour
             rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x, jumpForce);
             jumpLes--;
 
-        }
-       
-    
+        }   
+    }
+    void JumpAnim()
+    {
+        Anim.SetFloat("VerticalAnim", rb2d.linearVelocity.y);
+        Anim.SetBool("GroundCheck", isgroundCheck);
     }
     void Flip() 
     {
