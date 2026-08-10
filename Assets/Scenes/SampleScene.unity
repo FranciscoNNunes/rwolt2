@@ -7797,7 +7797,7 @@ GameObject:
   - component: {fileID: 373822660}
   m_Layer: 9
   m_Name: peDoPersonagem
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9294,6 +9294,7 @@ MonoBehaviour:
   moveSpeed: 10
   jumpForce: 15
   totaljump: 2
+  Anim: {fileID: 860869274}
 --- !u!212 &860869269
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9511,11 +9512,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d217401503d088c40aa30e8b3748aaa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::heartSystem
-  vida: 0
-  vidaMaxima: 0
-  coracao: []
-  cheio: {fileID: 0}
-  vazio: {fileID: 0}
+  vida: 6
+  vidaMaxima: 6
+  coracao:
+  - {fileID: 266706540}
+  - {fileID: 457837294}
+  - {fileID: 722450552}
+  - {fileID: 521020467}
+  - {fileID: 2099066053}
+  - {fileID: 270797371}
+  cheio: {fileID: -205270267638800340, guid: 1b6c07bf6ae13284db930e9b02a1fcc9, type: 3}
+  vazio: {fileID: -7443756053782179069, guid: f26d8b95d7b4ed34b9167628bd7f51ad, type: 3}
 --- !u!1 &879205254
 GameObject:
   m_ObjectHideFlags: 0
@@ -10008,7 +10015,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -350, y: 175}
+  m_AnchoredPosition: {x: -350, y: 125}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1077519770
