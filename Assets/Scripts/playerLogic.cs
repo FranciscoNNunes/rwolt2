@@ -2,7 +2,7 @@ using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class Player : MonoBehaviour
+public class playerLogic : MonoBehaviour
 {
     [SerializeField] private Transform groundCheck;
 
@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Animator Anim;
 
+    [SerializeField] private bool temEscudo;
     private int jumpLes;
 
     private bool isgroundCheck;
