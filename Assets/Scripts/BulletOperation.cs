@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class BulletOperation: MonoBehaviour
 {
     // Removi a variável "public heartSystem heart" daqui de cima 
     // porque agora vamos pegar o script diretamente do Player que colidir.

@@ -21,6 +21,8 @@ public class playerLogic : MonoBehaviour
     [SerializeField] private bool temEscudo;
     private int jumpLes;
 
+    public GameObject bullet;
+
     private bool isgroundCheck;
     private bool canJump;
 
@@ -32,6 +34,12 @@ public class playerLogic : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         jumpLes = totaljump;
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Instantiate(bullet, transform.position, transform.rotation);
+        }
+
     }
 
     void Update()
