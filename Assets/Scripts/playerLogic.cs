@@ -1,9 +1,16 @@
-using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class playerLogic : MonoBehaviour
 {
+    public int vida;
+    public int vidaMaxima;
+     public GameObject escudo;
+    public Image[] coracao;
+    public Sprite cheio;
+    public Sprite vazio;
     [SerializeField] private Transform groundCheck;
 
     [SerializeField] private float groundDist;
@@ -18,9 +25,11 @@ public class playerLogic : MonoBehaviour
 
     [SerializeField] private Animator Anim;
 
-    [SerializeField] private bool temEscudo;
+    public bool temEscudo;
+    public int vidaMaximaDoEscudo;
+    public int vidaAtualDoEscudo;
     private int jumpLes;
-
+    public Transform LocalDeAttack;
     public GameObject bullet;
 
     private bool isgroundCheck;
@@ -34,23 +43,96 @@ public class playerLogic : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         jumpLes = totaljump;
-
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Instantiate(bullet, transform.position, transform.rotation);
-        }
-
     }
 
     void Update()
     {
+        Ataque();
         GetInputMove();
         DirectionCheck();
         CanJump();
         MoveAnim();
         JumpAnim();
+        HealthLogic();
     }
+    public void AtivarEscudo()
+    {
+        vidaAtualDoEscudo = vidaMaximaDoEscudo;
+        escudo.SetActive(true);
+        temEscudo = true;
+    }
+     public void GanharVida(int vidaParaReceber)
+    {
+        if(vida + vidaParaReceber <= vidaMaxima)
+        {
+            vida += vidaParaReceber;
+        }
+        else
+        {
+            vida = vidaMaxima;
+        }
+    }
+    private void Ataque()
+    {
+    if (Input.GetButtonDown("Fire1"))
+        {
+            Instantiate(bullet, LocalDeAttack.position, transform.rotation);
+        }
+    }
+    void HealthLogic()
+    {
 
+
+        if (vida > vidaMaxima)
+        {
+            vida = vidaMaxima;
+        }
+
+
+        for (int i = 0; i < coracao.Length; i++)
+        {
+            if (i < vida)
+            {
+                coracao[i].sprite = cheio;
+
+            }
+            else
+            {
+                coracao[i].sprite = vazio;
+            }
+            if (i < vidaMaxima)
+            {
+
+                coracao[i].enabled = true;
+            }
+            else
+            {
+                coracao[i].enabled = false;
+            }
+        }
+    }
+    public void TakeDamage(int danoParaReceber)
+    {
+        if (temEscudo == false)
+        {
+            vida -= danoParaReceber;
+            if(vida <= 0)
+            {
+                Debug.Log("GameOver");
+                SceneManager.LoadScene("GameOver");
+            }
+        }
+        else
+        {
+            vida -= danoParaReceber;
+
+            if (vida <= 0)
+            {
+                escudo.SetActive(false);
+                temEscudo = false;
+            }
+        }
+    }
     private void FixedUpdate()
     {
         MoveLogic();

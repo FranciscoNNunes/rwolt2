@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6181945035954991405}
   - component: {fileID: 5187751208990369995}
   - component: {fileID: 1927951256201896031}
-  - component: {fileID: 6422962474199049864}
+  - component: {fileID: 4791551019823330893}
   m_Layer: 6
   m_Name: InimigoVoador
   m_TagString: Enemy
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InimigoPerseguidor
   velocidadeDoInimigo: 5
---- !u!114 &6422962474199049864
+--- !u!114 &4791551019823330893
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -179,7 +179,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7295631505709007751}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c00ccb6dfb2784f408291ed50005774a, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a5d5360b8a0cb845842d389b6a94874, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Triger
-  heart: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  vidaMaximaDoInimigo: 3
+  vidaAtualDoInimigo: 0
+  danoParaDar: 1
+  chanceParaDropar: 0
+  itemParaDropar: {fileID: 0}

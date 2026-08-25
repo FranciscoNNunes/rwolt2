@@ -1,30 +1,33 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 8;
+    public float bulletvelocity;
+
+    public int danoParaDar;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, speed);
+        
     }
+
+    // Update is called once per frame
     void Update()
     {
-
+        MovimentarLaser();
     }
-    private void OnBecameInvisible()//Aciona quando o objeto com arte sai da c�mera
+    private void MovimentarLaser()
     {
-        Destroy(gameObject);
+        transform.Translate(Vector2.right* bulletvelocity * Time.deltaTime);
     }
-    //Evento acionado quando este objeto bate em outro. Esse ou o outro
-    //deve ser isTrigger
-    private void OnTriggerEnter2D(Collider2D collision)//Esse collision � o objeto que bateu
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(collision.gameObject);//Esse destroi o inimigo
-            Destroy(gameObject);//Esse destroi a pr�pria bala
+                collision.gameObject.GetComponent<Enemy>().MachucarInimigo(danoParaDar);
+                Destroy(gameObject);
         }
-
     }
 }
