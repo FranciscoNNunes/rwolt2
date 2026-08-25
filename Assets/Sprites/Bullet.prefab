@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3178139089379537968}
   - component: {fileID: 3776131131159265688}
   - component: {fileID: 7867732905073656399}
+  - component: {fileID: -7015342027000210207}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -80,8 +81,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1663142411
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7673595411333208751, guid: eadfb5088fab73045a40dd098769d698, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -120,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
   bulletvelocity: 10
-  danoParaDar: 1
+  danoParaDar: 3
 --- !u!61 &3776131131159265688
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -194,3 +195,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &-7015342027000210207
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302096637638078126}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f1d491a7934a4124e9abf23a5403c3ac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
