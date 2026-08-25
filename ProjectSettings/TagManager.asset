@@ -42,6 +42,9 @@ TagManager:
   - name: Background
     uniqueID: 2373568039
     locked: 0
+  - name: "Cen\xE1rio"
+    uniqueID: 656215733
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
