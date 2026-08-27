@@ -43,11 +43,12 @@ public class playerLogic : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         jumpLes = totaljump;
+        Attack();
     }
 
     void Update()
     {
-        Attack();
+        AttackAnim();
         GetInputMove();
         DirectionCheck();
         CanJump();
@@ -74,10 +75,14 @@ public class playerLogic : MonoBehaviour
     }
     private void Attack()
     {
+            Instantiate(bullet, LocalDeAttack.position, transform.rotation);
+    }
+    private void AttackAnim()
+    {
         if (Input.GetButtonDown("Fire1"))
         {
-            Anim.SetBool("AttackCheck",isAttackCheck);
-            Instantiate(bullet, LocalDeAttack.position, transform.rotation);
+            Attack();
+            Anim.SetFloat("AttackAnim", 1.0f);
         }
     }
     void HealthLogic()
