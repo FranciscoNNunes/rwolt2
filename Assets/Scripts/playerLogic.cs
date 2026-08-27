@@ -31,7 +31,7 @@ public class playerLogic : MonoBehaviour
     private int jumpLes;
     public Transform LocalDeAttack;
     public GameObject bullet;
-
+    private bool isAttackCheck;
     private bool isgroundCheck;
     private bool canJump;
 
@@ -74,8 +74,9 @@ public class playerLogic : MonoBehaviour
     }
     private void Ataque()
     {
-    if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
+            Anim.SetBool("AttackCheck", isAttackCheck);
             Instantiate(bullet, LocalDeAttack.position, transform.rotation);
         }
     }
