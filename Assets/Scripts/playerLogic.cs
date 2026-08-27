@@ -47,7 +47,7 @@ public class playerLogic : MonoBehaviour
 
     void Update()
     {
-        Ataque();
+        Attack();
         GetInputMove();
         DirectionCheck();
         CanJump();
@@ -72,11 +72,11 @@ public class playerLogic : MonoBehaviour
             vida = vidaMaxima;
         }
     }
-    private void Ataque()
+    private void Attack()
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            Anim.SetBool("AttackCheck", isAttackCheck);
+            Anim.SetBool("AttackCheck",isAttackCheck);
             Instantiate(bullet, LocalDeAttack.position, transform.rotation);
         }
     }
