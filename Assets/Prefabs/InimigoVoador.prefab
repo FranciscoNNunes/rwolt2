@@ -185,5 +185,5 @@ MonoBehaviour:
   vidaMaximaDoInimigo: 3
   vidaAtualDoInimigo: 0
   danoParaDar: 1
-  chanceParaDropar: 0
-  itemParaDropar: {fileID: 0}
+  chanceParaDropar: 25
+  itemParaDropar: {fileID: 3975691518137690750, guid: bc6184c73f3385148a08e43d6833dc9c, type: 3}

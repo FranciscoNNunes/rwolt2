@@ -3,7 +3,7 @@ using UnityEngine;
 public class PatrulEnemyController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private float speed = 10;
+    private float speed = 3;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
