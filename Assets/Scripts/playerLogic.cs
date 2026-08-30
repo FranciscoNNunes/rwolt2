@@ -2,12 +2,13 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class playerLogic : MonoBehaviour
 {
     public int vida;
     public int vidaMaxima;
-     public GameObject escudo;
+    public GameObject escudo;
     public Image[] coracao;
     public Sprite cheio;
     public Sprite vazio;
@@ -24,7 +25,6 @@ public class playerLogic : MonoBehaviour
     [SerializeField] private int totaljump;
 
     [SerializeField] private Animator Anim;
-
     public bool temEscudo;
     public int vidaMaximaDoEscudo;
     public int vidaAtualDoEscudo;
@@ -34,6 +34,12 @@ public class playerLogic : MonoBehaviour
     private bool isAttackCheck;
     private bool isgroundCheck;
     private bool canJump;
+    private bool canDash = true;
+    private bool isDashing;
+    private float dashingPower = 24f;
+    private float dashingTime = 0.4f;
+    private float dashingCooldowm = 1f;
+    [SerializeField] private TrailRenderer tr;
 
     private Rigidbody2D rb2d;
     private float inputDirection;
@@ -41,20 +47,35 @@ public class playerLogic : MonoBehaviour
     private bool isDirectionRight = true;
     void Start()
     {
+        Anim = GetComponent<Animator>();
+        vidaAtualDoEscudo = vidaMaximaDoEscudo;
         rb2d = GetComponent<Rigidbody2D>();
         jumpLes = totaljump;
-        Attack();
+        temEscudo = false;
+        escudo.SetActive(false);
     }
 
     void Update()
     {
-        AttackAnim();
+        if(isDashing)
+        {
+            return;
+        }
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Anim.SetTrigger("Attack");
+        }
+
         GetInputMove();
         DirectionCheck();
         CanJump();
         MoveAnim();
         JumpAnim();
         HealthLogic();
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        {
+            StartCoroutine(Dash());
+        }
     }
     public void AtivarEscudo()
     {
@@ -73,16 +94,11 @@ public class playerLogic : MonoBehaviour
             vida = vidaMaxima;
         }
     }
-    private void Attack()
+        public void InstanciarNoUltimoFrame()
     {
-            Instantiate(bullet, LocalDeAttack.position, transform.rotation);
-    }
-    private void AttackAnim()
-    {
-        if (Input.GetButtonDown("Fire1"))
+        if(bullet != null && LocalDeAttack != null)
         {
-            Attack();
-            Anim.SetFloat("AttackAnim", 1.0f);
+        Instantiate(bullet, LocalDeAttack.position, LocalDeAttack.rotation);
         }
     }
     void HealthLogic()
@@ -124,7 +140,6 @@ public class playerLogic : MonoBehaviour
             vida -= danoParaReceber;
             if(vida <= 0)
             {
-                Debug.Log("GameOver");
                 SceneManager.LoadScene("GameOver");
             }
         }
@@ -141,6 +156,10 @@ public class playerLogic : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if(isDashing)
+        {
+            return;
+        }
         MoveLogic();
         CheckArea();
     }
@@ -217,5 +236,20 @@ public class playerLogic : MonoBehaviour
         isDirectionRight = !isDirectionRight;
         transform.Rotate(0.0f, 180.0f, 0.0f);
 
+    }
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        float originalGravity = rb2d.gravityScale;
+        rb2d.gravityScale = 0f;
+        rb2d.linearVelocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        tr.emitting = true;
+        yield return new  WaitForSeconds(dashingTime);
+        tr.emitting = false;
+        rb2d.gravityScale = originalGravity;
+        isDashing = false;
+        yield return new WaitForSeconds(dashingCooldowm);
+        canDash = true;
     }
 }
