@@ -39,6 +39,29 @@ BlendTree:
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
+--- !u!206 &-8495971020408443486
+BlendTree:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Blend Tree
+  m_Childs:
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: 3013bdf245f362d48a641f6999944ce8, type: 2}
+    m_Threshold: 0
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: Blend
+    m_Mirror: 0
+  m_BlendParameter: Blend
+  m_BlendParameterY: Blend
+  m_MinThreshold: 0
+  m_MaxThreshold: 1
+  m_UseAutomaticThresholds: 1
+  m_NormalizedBlendValues: 0
+  m_BlendType: 0
 --- !u!1102 &-7860525864428132299
 AnimatorState:
   serializedVersion: 6
@@ -61,7 +84,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 3013bdf245f362d48a641f6999944ce8, type: 2}
+  m_Motion: {fileID: -8495971020408443486}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -215,10 +238,10 @@ AnimatorStateMachine:
     m_Position: {x: 460, y: 200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4839464374495897949}
-    m_Position: {x: 700, y: 370, z: 0}
+    m_Position: {x: 750, y: 370, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7860525864428132299}
-    m_Position: {x: 760, y: 200, z: 0}
+    m_Position: {x: 870, y: 230, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -438,18 +461,10 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 8ab851fdbfb4dc84981dce18ff9bef0f, type: 2}
+    m_Motion: {fileID: 7400000, guid: 1bb8516b54829894ab7f56c2658c68f3, type: 2}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
-    m_CycleOffset: 0
-    m_DirectBlendParameter: Blend
-    m_Mirror: 0
-  - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 1bc7a81b79a1f9644b3daa1300dcf0b1, type: 2}
-    m_Threshold: 1
-    m_Position: {x: 0, y: 0}
-    m_TimeScale: -0.000001
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0

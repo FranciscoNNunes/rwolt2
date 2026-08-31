@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: AttackBulletAnim 1
+  m_Name: Bullet_Wolf_Anim
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,9 +21,9 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -7795444796356931199, guid: 0b1a4f50b67e6224ba7f0e54ac2a8aea, type: 3}
-    - time: 0.083333336
       value: {fileID: 3416794293673215763, guid: 0b1a4f50b67e6224ba7f0e54ac2a8aea, type: 3}
+    - time: 0.083333336
+      value: {fileID: -7795444796356931199, guid: 0b1a4f50b67e6224ba7f0e54ac2a8aea, type: 3}
     - time: 0.16666667
       value: {fileID: -4777866798417995230, guid: 0b1a4f50b67e6224ba7f0e54ac2a8aea, type: 3}
     - time: 0.25
@@ -56,8 +56,8 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -7795444796356931199, guid: 0b1a4f50b67e6224ba7f0e54ac2a8aea, type: 3}
     - {fileID: 3416794293673215763, guid: 0b1a4f50b67e6224ba7f0e54ac2a8aea, type: 3}
+    - {fileID: -7795444796356931199, guid: 0b1a4f50b67e6224ba7f0e54ac2a8aea, type: 3}
     - {fileID: -4777866798417995230, guid: 0b1a4f50b67e6224ba7f0e54ac2a8aea, type: 3}
     - {fileID: 8438839689956312567, guid: 0b1a4f50b67e6224ba7f0e54ac2a8aea, type: 3}
     - {fileID: -3083006002274839538, guid: 0b1a4f50b67e6224ba7f0e54ac2a8aea, type: 3}
