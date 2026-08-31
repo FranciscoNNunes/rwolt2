@@ -75,6 +75,7 @@ public class playerLogic : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
             StartCoroutine(Dash());
+            Anim.SetTrigger("Dash");
         }
     }
     public void AtivarEscudo()
