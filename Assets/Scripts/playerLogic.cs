@@ -99,7 +99,10 @@ public class playerLogic : MonoBehaviour
     {
         if(bullet != null && LocalDeAttack != null)
         {
-        Instantiate(bullet, LocalDeAttack.position, LocalDeAttack.rotation);
+        GameObject Bullet = Instantiate(bullet, LocalDeAttack.position, LocalDeAttack.rotation);
+
+        float direcaoAtual = transform.localScale.x > 0 ? 1f :-1f;
+        bullet.GetComponent<Bullet>().SetDirection(direcaoAtual);
         }
     }
     void HealthLogic()
@@ -235,7 +238,9 @@ public class playerLogic : MonoBehaviour
     void Flip() 
     {
         isDirectionRight = !isDirectionRight;
-        transform.Rotate(0.0f, 180.0f, 0.0f);
+        Vector3 escala = transform.localScale;
+        escala.x*= -1;
+        transform.localScale = escala;
 
     }
     private IEnumerator Dash()
