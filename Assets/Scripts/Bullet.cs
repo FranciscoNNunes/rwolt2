@@ -5,17 +5,14 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float bulletvelocity;
+
     public int danoParaDar;
-    private float direction = 1f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
     }
-    public void SetDirection(float dir)
-    {
-        direction = dir;
-    }
+
     // Update is called once per frame
     void Update()
     {
@@ -23,7 +20,7 @@ public class Bullet : MonoBehaviour
     }
     private void MovimentarLaser()
     {
-        transform.Translate(Vector2.right * direction * bulletvelocity * Time.deltaTime);
+        transform.Translate(Vector2.right* bulletvelocity * Time.deltaTime);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
