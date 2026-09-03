@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class mainMenuMenagger : MonoBehaviour
 {
+    [SerializeField] private string credits;
     [SerializeField] private string nomeDoLevelDeJogo;
     [SerializeField]private GameObject painelMainMenu;
     [SerializeField]private GameObject painelOptions;
@@ -11,15 +12,9 @@ public class mainMenuMenagger : MonoBehaviour
     {
         SceneManager.LoadScene(nomeDoLevelDeJogo);
     }
-    public void AbrirOptions()
+    public void Creditos()
     {
-        painelMainMenu.SetActive(false);
-        painelOptions.SetActive(true);
-    }
-    public void FecharOptions()
-    {
-        painelOptions.SetActive(false);
-        painelMainMenu.SetActive(true);
+        SceneManager.LoadScene(credits);
     }
     public void BTN_Quit()
     {
