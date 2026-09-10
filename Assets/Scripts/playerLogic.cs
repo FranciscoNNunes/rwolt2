@@ -3,6 +3,7 @@ using UnityEngine.Rendering;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using Unity.Hierarchy;
 
 public class playerLogic : MonoBehaviour
 {
@@ -63,6 +64,7 @@ public class playerLogic : MonoBehaviour
         }
         if (Input.GetButtonDown("Fire1"))
         {
+
             Anim.SetTrigger("Attack");
         }
 
@@ -102,7 +104,7 @@ public class playerLogic : MonoBehaviour
         GameObject Bullet = Instantiate(bullet, LocalDeAttack.position, LocalDeAttack.rotation);
 
         float direcaoAtual = transform.localScale.x > 0 ? 1f :-1f;
-        bullet.GetComponent<Bullet>().SetDirection(direcaoAtual);
+        Bullet.GetComponent<Bullet>().SetDirection(direcaoAtual);
         }
     }
     void HealthLogic()

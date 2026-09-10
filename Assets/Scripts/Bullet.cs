@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float bulletvelocity;
+    [SerializeField]private float bulletvelocity;
     public int danoParaDar;
     private float direction = 1f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Destroy(gameObject, 3f);
     }
     public void SetDirection(float dir)
     {
         direction = dir;
+
+        Vector3 escala = transform.localScale;
+        escala.x = Mathf.Abs(escala.x) * direction;
+        transform.localScale = escala;
     }
     // Update is called once per frame
     void Update()
@@ -23,7 +27,7 @@ public class Bullet : MonoBehaviour
     }
     private void MovimentarLaser()
     {
-        transform.Translate(Vector2.right * direction * bulletvelocity * Time.deltaTime);
+        transform.Translate(Vector2.right * direction * bulletvelocity * Time.deltaTime, Space.World);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -36,6 +40,10 @@ public class Bullet : MonoBehaviour
         {
                 collision.gameObject.GetComponent<Bau>().AbrirBau(danoParaDar);
                 Destroy(gameObject);
+        }
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            Destroy(gameObject);
         }
     }
 }

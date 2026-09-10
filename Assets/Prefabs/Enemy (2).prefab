@@ -81,8 +81,8 @@ GameObject:
   - component: {fileID: 1217652808657000157}
   - component: {fileID: 3229922237238715065}
   - component: {fileID: 5594403026098261950}
-  - component: {fileID: 6338126793313109649}
   - component: {fileID: 1106625903059263695}
+  - component: {fileID: -3858727931899055676}
   m_Layer: 0
   m_Name: Enemy (2)
   m_TagString: Enemy
@@ -254,18 +254,6 @@ MonoBehaviour:
   danoParaDar: 2
   chanceParaDropar: 50
   itemParaDropar: {fileID: 3975691518137690750, guid: bc6184c73f3385148a08e43d6833dc9c, type: 3}
---- !u!114 &6338126793313109649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5411483750513695881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68fc425f7e3118c4f9fa7f05a1fdbfeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PatrulEnemyController
 --- !u!95 &1106625903059263695
 Animator:
   serializedVersion: 7
@@ -288,3 +276,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-3858727931899055676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5411483750513695881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b084ddb68b70def4186d9f09d5bec220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AreaDeAtaqueDoInimigo
+  danoParaDar: 1
+  tempoDeVerificarAtaque: 1

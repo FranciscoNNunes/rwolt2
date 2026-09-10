@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+
     public float vidaMaximaDoInimigo;
 
     public float vidaAtualDoInimigo;
@@ -14,7 +15,7 @@ public class Enemy : MonoBehaviour
     public int chanceParaDropar;
 
     public GameObject itemParaDropar;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         vidaAtualDoInimigo = vidaMaximaDoInimigo;
@@ -38,14 +39,6 @@ public class Enemy : MonoBehaviour
                 Instantiate(itemParaDropar,transform.position,Quaternion.Euler(0f, 0f, 0f));
 
             }
-            Destroy(this.gameObject);
-        }
-    }
-     private void OnTriggerEnter2D(UnityEngine.Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            collision.gameObject.GetComponent<playerLogic>().TakeDamage(danoParaDar);
             Destroy(this.gameObject);
         }
     }
