@@ -1,37 +1,48 @@
-using Unity.Cinemachine;
 using UnityEngine;
 
 public class Bau : MonoBehaviour
 {
-    public float vidaMaximaDoBau;
-    public float vidaDoBau;
     public int chanceParaDropar;
     public GameObject itemParaDropar;
+    private bool playerNoAlcance = false;
+    private bool jaAberto = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        vidaDoBau = vidaMaximaDoBau;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-    public void AbrirBau(int danoParaReceber)
-    {
-        vidaDoBau -= danoParaReceber;
-
-        if (vidaDoBau <= 0)
+        if (playerNoAlcance && Input.GetKeyDown(KeyCode.E) && !jaAberto)
         {
+            AbrirBau();
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {   
+        if (collision.CompareTag("Player"))
+        {
+            playerNoAlcance = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            playerNoAlcance = false;
+        }
+    }
+    public void AbrirBau()
+    {
+            jaAberto = true;
             int numeroAleatorio = Random.Range(0, 100);
 
             if (numeroAleatorio <= chanceParaDropar)
             {
-                Instantiate(itemParaDropar, transform.position, Quaternion.Euler(0f, 0f, 0f));
+                Instantiate(itemParaDropar, transform.position, Quaternion.identity);
 
             }
-            Destroy(this.gameObject);
-        }
+            Destroy(gameObject);
     }
 }

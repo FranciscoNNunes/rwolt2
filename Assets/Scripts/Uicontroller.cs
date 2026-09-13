@@ -37,6 +37,10 @@ public class Uicontroller : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
     }
+    public void BTN_Pause()
+    {
+        ShowPauseMenu();
+    }
     public void BTN_Resume()
     {
         HidePauseMenu();

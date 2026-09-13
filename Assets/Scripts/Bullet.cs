@@ -36,11 +36,6 @@ public class Bullet : MonoBehaviour
                 collision.gameObject.GetComponent<Enemy>().MachucarInimigo(danoParaDar);
                 Destroy(gameObject);
         }
-        if (collision.gameObject.CompareTag("Bau"))
-        {
-                collision.gameObject.GetComponent<Bau>().AbrirBau(danoParaDar);
-                Destroy(gameObject);
-        }
         if (collision.gameObject.CompareTag("Ground"))
         {
             Destroy(gameObject);

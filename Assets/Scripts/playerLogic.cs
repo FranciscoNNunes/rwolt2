@@ -4,6 +4,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using Unity.Hierarchy;
+using System.Collections.Generic;
+
 
 public class playerLogic : MonoBehaviour
 {
@@ -66,6 +68,7 @@ public class playerLogic : MonoBehaviour
         {
 
             Anim.SetTrigger("Attack");
+            SoundsEfects.instance.somDeAttack.Play();
         }
 
         GetInputMove();

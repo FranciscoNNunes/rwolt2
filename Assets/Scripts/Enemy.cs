@@ -26,6 +26,14 @@ public class Enemy : MonoBehaviour
     {
         
     }
+    private void OnTriggerEnter2D(UnityEngine.Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<playerLogic>().TakeDamage(danoParaDar);
+            Destroy(this.gameObject);
+        }
+    }
     public void MachucarInimigo(int danoParaReceber)
     {
         vidaAtualDoInimigo -= danoParaReceber;
