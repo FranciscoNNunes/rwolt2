@@ -8,6 +8,6 @@ public class TentarNovamente : MonoBehaviour
     [SerializeField] private string nomeDoLevelDeJogo;
     public void Return()
     {
-        SceneManager.LoadScene("Demo");
+        SceneManager.LoadScene("MenuLevel");
     }
 }

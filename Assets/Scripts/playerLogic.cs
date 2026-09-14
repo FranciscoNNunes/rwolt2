@@ -68,7 +68,6 @@ public class playerLogic : MonoBehaviour
         {
 
             Anim.SetTrigger("Attack");
-            SoundsEfects.instance.somDeAttack.Play();
         }
 
         GetInputMove();
