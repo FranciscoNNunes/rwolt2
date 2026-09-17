@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Bau : MonoBehaviour
 {
+    [SerializeField] GameObject GuiaBau;
     public int chanceParaDropar;
     public GameObject itemParaDropar;
     private bool playerNoAlcance = false;
@@ -9,8 +10,8 @@ public class Bau : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GuiaBau.SetActive(false);
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -23,13 +24,15 @@ public class Bau : MonoBehaviour
     {   
         if (collision.CompareTag("Player"))
         {
+            GuiaBau.SetActive(true);
             playerNoAlcance = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
-        {
+        {   
+            GuiaBau.SetActive(false);
             playerNoAlcance = false;
         }
     }
