@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Bau : MonoBehaviour
 {
-    [SerializeField] GameObject GuiaBau;
+    [SerializeField] GameObject guiaBau;
     public int chanceParaDropar;
     public GameObject itemParaDropar;
     private bool playerNoAlcance = false;
@@ -10,7 +10,7 @@ public class Bau : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GuiaBau.SetActive(false);
+        guiaBau.SetActive(false);
     }
     // Update is called once per frame
     void Update()
@@ -24,7 +24,7 @@ public class Bau : MonoBehaviour
     {   
         if (collision.CompareTag("Player"))
         {
-            GuiaBau.SetActive(true);
+            guiaBau.SetActive(true);
             playerNoAlcance = true;
         }
     }
@@ -32,7 +32,7 @@ public class Bau : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {   
-            GuiaBau.SetActive(false);
+            guiaBau.SetActive(false);
             playerNoAlcance = false;
         }
     }
