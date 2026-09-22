@@ -1466,8 +1466,8 @@ Tilemap:
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -13, y: -9, z: 0}
-  m_Size: {x: 36, y: 9, z: 1}
+  m_Origin: {x: -13, y: -44, z: 0}
+  m_Size: {x: 202, y: 44, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -2314,9 +2314,7 @@ PlayableDirector:
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 4494246943192390293, guid: b14d72e6ed20df84caa93b9750ec1005, type: 2}
-    value: {fileID: 1298262271}
+  m_SceneBindings: []
   m_ExposedReferences:
     m_References: []
 --- !u!95 &1298262271 stripped
@@ -2472,6 +2470,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!1 &1630503145
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1630503147}
+  - component: {fileID: 1630503146}
+  m_Layer: 0
+  m_Name: Timeline
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!320 &1630503146
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630503145}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: a99535742488f8c469db60dd58c5a14c, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -7523420254478802769, guid: a99535742488f8c469db60dd58c5a14c, type: 2}
+    value: {fileID: 1298262271}
+  m_ExposedReferences:
+    m_References: []
+--- !u!4 &1630503147
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630503145}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1803404216
 GameObject:
   m_ObjectHideFlags: 0
@@ -2574,6 +2623,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lobo
       objectReference: {fileID: 0}
+    - target: {fileID: 2905932533998528671, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.992
+      objectReference: {fileID: 0}
+    - target: {fileID: 2905932533998528671, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 3.4599998
+      objectReference: {fileID: 0}
     - target: {fileID: 4525864676797813098, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
       propertyPath: 'coracao.Array.data[0]'
       value: 
@@ -2602,9 +2659,13 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7530286144167716562, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7832141691522925302, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.07
+      value: -11.35
       objectReference: {fileID: 0}
     - target: {fileID: 7832141691522925302, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2923,3 +2984,4 @@ SceneRoots:
   - {fileID: 2120915259}
   - {fileID: 263895135}
   - {fileID: 1882712319}
+  - {fileID: 1630503147}
