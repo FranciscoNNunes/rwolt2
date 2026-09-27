@@ -1,16 +1,19 @@
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class AreaDeAtaqueDoInimigo : MonoBehaviour
+public class MiniBoss : MonoBehaviour
 {
-    public int danoParaDar;
+    public float vidaAtualDoMBoss;
+    public float vidaMaximaDoMBoss;
     private bool estaNaAreaDeAtaque;
     public float tempoDeVerificarAtaque = 1.0f;
     private Coroutine rotinaDeAtaque;
+    public int danoParaDar;
+    public GameObject itemParaDropar;
     void Start()
     {
-        
+        vidaAtualDoMBoss = vidaMaximaDoMBoss;
     }
     private void OnTriggerEnter2D(UnityEngine.Collider2D collision)
     {
@@ -27,14 +30,24 @@ public class AreaDeAtaqueDoInimigo : MonoBehaviour
         {
             estaNaAreaDeAtaque = false;
             if(rotinaDeAtaque != null)
-        {
+            {
             StopCoroutine(rotinaDeAtaque);
+            }
         }
+    }
+    public void MachucarMBoss(int danoParaReceber)
+    {
+        vidaAtualDoMBoss-= danoParaReceber;
+
+        if(vidaAtualDoMBoss <= 0)
+        {
+            Instantiate(itemParaDropar,transform.position,Quaternion.Euler(0f, 0f, 0f));
+            Destroy(this.gameObject);
         }
     }
     void Update()
     {
-    
+
     }
     private IEnumerator ExecutarAtaqueComAtraso(Collider2D playerCollider)
     {
