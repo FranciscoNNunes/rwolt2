@@ -439,7 +439,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &158548355
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4014,8 +4014,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\tDroga, t\xE1 se n\xE3o posso posso fugir ent\xE3o terei que lutar com
-    ele, mas provavelmente ele nem"
+  m_text: "Droga, t\xE1 se n\xE3o posso posso fugir ent\xE3o terei que lutar com
+    ele, mas tudo bem provavelmente ele nem \xE9 forte"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 241c6acceca8b844baad6cbcf60cefc7, type: 2}
   m_sharedMaterial: {fileID: -699112959996641730, guid: 241c6acceca8b844baad6cbcf60cefc7, type: 2}
@@ -4486,6 +4486,14 @@ PlayableDirector:
     value: {fileID: 75926420}
   - key: {fileID: -3700311087433439762, guid: a99535742488f8c469db60dd58c5a14c, type: 2}
     value: {fileID: 480249255}
+  - key: {fileID: -307877030149715194, guid: a99535742488f8c469db60dd58c5a14c, type: 2}
+    value: {fileID: 822733272}
+  - key: {fileID: -4197085436002061354, guid: a99535742488f8c469db60dd58c5a14c, type: 2}
+    value: {fileID: 2037543223}
+  - key: {fileID: -3747936737614528472, guid: a99535742488f8c469db60dd58c5a14c, type: 2}
+    value: {fileID: 158548354}
+  - key: {fileID: -395813523804696172, guid: a99535742488f8c469db60dd58c5a14c, type: 2}
+    value: {fileID: 984198870}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1630503147
