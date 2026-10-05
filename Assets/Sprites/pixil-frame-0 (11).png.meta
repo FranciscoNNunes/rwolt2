@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: fd5d85663b1fc594f81db631fe7c77de
+guid: 23b79fb726e3844498402ffe9616705c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1998871931894456392
-    second: wolfsrevengegay_0
+      213: -8287650901645349780
+    second: pixil-frame-0 (11)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -139,23 +139,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wolfsrevengegay_0
+      name: pixil-frame-0 (11)_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 5000
-        height: 5000
+        x: 2
+        y: 1
+        width: 29
+        height: 30
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 840611c7e6b6dbb10800000000000000
-      internalID: 1998871931894456392
+      spriteID: c6cabf03a695cfc80800000000000000
+      internalID: -8287650901645349780
       vertices: []
       indices: 
       edges: []
@@ -164,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 4f3c0519e6cbb754f92eb865c7ea006a
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -172,11 +172,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":1,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      wolfsrevengegay_0: 1998871931894456392
+      pixil-frame-0 (11)_0: -8287650901645349780
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

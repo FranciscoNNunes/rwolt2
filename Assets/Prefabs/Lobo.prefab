@@ -200,7 +200,7 @@ MonoBehaviour:
   vidaAtualDoEscudo: 0
   LocalDeAttack: {fileID: 2379847775500008238}
   bullet: {fileID: 5302096637638078126, guid: fb56b2a9a69cd064480248aeabedfdee, type: 3}
-  tr: {fileID: 0}
+  tr: {fileID: 7371455555432315512}
 --- !u!95 &1670494494746046092
 Animator:
   serializedVersion: 7
