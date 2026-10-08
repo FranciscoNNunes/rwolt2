@@ -223,7 +223,7 @@ public class playerLogic : MonoBehaviour
     }
     void MoveAnim()
     {
-        Anim.SetFloat("HorizontalAnim",rb2d.linearVelocity.x);
+        Anim.SetFloat("HorizontalAnim", Mathf.Abs(inputDirection));
     }
     void Jump() 
     {
