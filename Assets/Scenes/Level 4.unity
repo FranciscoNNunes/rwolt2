@@ -370,6 +370,10 @@ PrefabInstance:
       propertyPath: 'coracao.Array.data[5]'
       value: 
       objectReference: {fileID: 1789850497448935574}
+    - target: {fileID: 7530286144167716562, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7832141691522925302, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.55051
