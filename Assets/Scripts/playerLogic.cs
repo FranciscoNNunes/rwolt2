@@ -148,7 +148,7 @@ public class playerLogic : MonoBehaviour
             vida -= danoParaReceber;
             if(vida <= 0)
             {
-                SceneManager.LoadScene("GameOver");
+                Anim.SetTrigger("Death");
             }
         }
         else

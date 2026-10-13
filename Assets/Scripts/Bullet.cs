@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -39,6 +39,11 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             Destroy(gameObject);
+        }
+        if (collision.gameObject.CompareTag("MBoss"))
+        {
+                collision.gameObject.GetComponent<MiniBoss>().MachucarMBoss(danoParaDar);
+                Destroy(gameObject);
         }
     }
 }

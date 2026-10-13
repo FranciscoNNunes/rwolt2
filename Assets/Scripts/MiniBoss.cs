@@ -10,18 +10,32 @@ public class MiniBoss : MonoBehaviour
     public float tempoDeVerificarAtaque = 1.0f;
     private Coroutine rotinaDeAtaque;
     public int danoParaDar;
-    public GameObject itemParaDropar;
+    public GameObject bulletBoss;
+    public float direcaoTiro = 1f;
+    public Transform[] pontosDeMovimento;
+    public int indicePontoAtual = 0;
+    public int indicePontoDestinoAposAtacar = 2; 
+    public float velocidadeMovimento = 5f;
+    private bool estaMovendo = false;
+    private Transform alvoMovimento = null;
     void Start()
     {
         vidaAtualDoMBoss = vidaMaximaDoMBoss;
+
+        if (pontosDeMovimento != null && pontosDeMovimento.Length > indicePontoAtual)
+        {
+            transform.position = pontosDeMovimento[indicePontoAtual].position;
+        }
     }
     private void OnTriggerEnter2D(UnityEngine.Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
+        if(collision.CompareTag("Player") && !estaMovendo)
         {
-        estaNaAreaDeAtaque = true;
-
-        rotinaDeAtaque = StartCoroutine(ExecutarAtaqueComAtraso(collision));
+            estaNaAreaDeAtaque = true;
+            if (rotinaDeAtaque == null)
+            {
+                rotinaDeAtaque = StartCoroutine(ExecutarAtaqueESubir());
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -31,7 +45,8 @@ public class MiniBoss : MonoBehaviour
             estaNaAreaDeAtaque = false;
             if(rotinaDeAtaque != null)
             {
-            StopCoroutine(rotinaDeAtaque);
+                StopCoroutine(rotinaDeAtaque);
+                rotinaDeAtaque = null;
             }
         }
     }
@@ -41,25 +56,40 @@ public class MiniBoss : MonoBehaviour
 
         if(vidaAtualDoMBoss <= 0)
         {
-            Instantiate(itemParaDropar,transform.position,Quaternion.Euler(0f, 0f, 0f));
             Destroy(this.gameObject);
         }
     }
     void Update()
     {
+        if (estaMovendo && alvoMovimento != null)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, alvoMovimento.position, velocidadeMovimento * Time.deltaTime);
 
+            if (Vector2.Distance(transform.position, alvoMovimento.position) < 0.1f)
+            {
+                estaMovendo = false;
+            }
+        }
     }
-    private IEnumerator ExecutarAtaqueComAtraso(Collider2D playerCollider)
+    private IEnumerator ExecutarAtaqueESubir()
     {
             yield return new WaitForSeconds(tempoDeVerificarAtaque);
 
-            if (estaNaAreaDeAtaque && playerCollider != null)
+        if (estaNaAreaDeAtaque)
         {
-            playerLogic player = playerCollider.GetComponent<playerLogic>();
-            if (player != null)
+            GameObject novaBullet = Instantiate(bulletBoss, transform.position, Quaternion.identity);
+            bulletBoss scriptBullet = novaBullet.GetComponent<bulletBoss>();
+            if (scriptBullet != null)
             {
-                player.TakeDamage(danoParaDar);
+                scriptBullet.SetDirection(direcaoTiro);
             }
+            if (pontosDeMovimento != null && pontosDeMovimento.Length > indicePontoDestinoAposAtacar)
+            {
+                alvoMovimento = pontosDeMovimento[indicePontoDestinoAposAtacar];
+                estaMovendo = true;
+            }
+            
+            rotinaDeAtaque = null;
         }
     }
 }

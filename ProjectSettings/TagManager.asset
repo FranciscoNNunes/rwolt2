@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Bau
   - Ground
+  - MBoss
   layers:
   - Default
   - TransparentFX
