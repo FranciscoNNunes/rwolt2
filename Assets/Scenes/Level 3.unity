@@ -357,6 +357,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mago (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5594403026098261950, guid: 47795288997a47f42bc3ab090fd9d89c, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1898471953}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -32235,6 +32239,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1898471950}
     - target: {fileID: 4525864676797813098, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
+      propertyPath: KBTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525864676797813098, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
+      propertyPath: KBForce
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525864676797813098, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
       propertyPath: 'coracao.Array.data[0]'
       value: 
       objectReference: {fileID: 933388362}
@@ -32313,6 +32325,17 @@ TrailRenderer:
   m_CorrespondingSourceObject: {fileID: 7371455555432315512, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
   m_PrefabInstance: {fileID: 1898471948}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1898471953 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4525864676797813098, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
+  m_PrefabInstance: {fileID: 1898471948}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7595172a3ec1d76469b2da027867b565, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
 --- !u!1001 &1969169976
 PrefabInstance:
   m_ObjectHideFlags: 0

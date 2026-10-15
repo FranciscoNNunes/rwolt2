@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public playerLogic player;
 
     public float vidaMaximaDoInimigo;
 
@@ -48,6 +49,21 @@ public class Enemy : MonoBehaviour
 
             }
             Destroy(this.gameObject);
+        }
+    }
+    private void OnColliderEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            player.KBCount = player.KBTime;
+            if(collision.transform.position.x <= transform.position.x)
+            {
+                player.isKnockRight = true;
+            }
+            if(collision.transform.position.x > transform.position.x)
+            {
+                player.isKnockRight = false;
+            }
         }
     }
 }

@@ -48,6 +48,12 @@ public class playerLogic : MonoBehaviour
     private float inputDirection;
 
     private bool isDirectionRight = true;
+
+    public float KBForce;
+    public float KBCount;
+    public float KBTime;
+
+    public bool isKnockRight;
     void Start()
     {
         Anim = GetComponent<Animator>();
@@ -69,7 +75,6 @@ public class playerLogic : MonoBehaviour
 
             Anim.SetTrigger("Attack");
         }
-
         GetInputMove();
         DirectionCheck();
         CanJump();
@@ -148,6 +153,7 @@ public class playerLogic : MonoBehaviour
             vida -= danoParaReceber;
             if(vida <= 0)
             {
+                deathState();
                 Anim.SetTrigger("Death");
             }
         }
@@ -168,8 +174,29 @@ public class playerLogic : MonoBehaviour
         {
             return;
         }
-        MoveLogic();
+        knockLogic();
         CheckArea();
+    }
+
+    void knockLogic()
+    {
+        if(KBCount < 0)
+        {
+            MoveLogic();
+        }
+        else
+        {
+            if(isKnockRight == true)
+            {
+                rb2d.linearVelocity = new Vector2(-KBForce, KBForce);
+            }
+            if(isKnockRight == false)
+            {
+
+                rb2d.linearVelocity = new Vector2(KBForce, KBForce);
+            }
+        }
+        KBCount -= Time.deltaTime;
     }
     void CanJump() 
     {
@@ -261,5 +288,10 @@ public class playerLogic : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldowm);
         canDash = true;
+    }
+
+    void deathState()
+    {
+        GetComponent<playerLogic>().enabled = false;
     }
 }

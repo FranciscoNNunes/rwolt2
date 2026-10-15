@@ -12,32 +12,67 @@ public class MiniBoss : MonoBehaviour
     public int danoParaDar;
     public GameObject bulletBoss;
     public float direcaoTiro = 1f;
-    public Transform[] pontosDeMovimento;
-    public int indicePontoAtual = 0;
-    public int indicePontoDestinoAposAtacar = 2; 
+    
     public float velocidadeMovimento = 5f;
-    private bool estaMovendo = false;
     private Transform alvoMovimento = null;
+    private int indiceWaypointAtual = 0;
+
     void Start()
     {
         vidaAtualDoMBoss = vidaMaximaDoMBoss;
+        
+        DefinirProximoWaypoint();
+    }
 
-        if (pontosDeMovimento != null && pontosDeMovimento.Length > indicePontoAtual)
+    void Update()
+    {
+        if (GerenciadorWaypointsInfinitos.Instance == null) return;
+        if (alvoMovimento != null)
         {
-            transform.position = pontosDeMovimento[indicePontoAtual].position;
+            transform.position = Vector2.MoveTowards(transform.position, alvoMovimento.position, velocidadeMovimento * Time.deltaTime);
+            if (Vector2.Distance(transform.position, alvoMovimento.position) < 0.2f)
+            {
+                indiceWaypointAtual++;
+                DefinirProximoWaypoint();
+            }
+        }
+        else
+        {
+            DefinirProximoWaypoint();
         }
     }
-    private void OnTriggerEnter2D(UnityEngine.Collider2D collision)
+
+    void DefinirProximoWaypoint()
     {
-        if(collision.CompareTag("Player") && !estaMovendo)
+        var listaWaypoints = GerenciadorWaypointsInfinitos.Instance.waypointsAtivos;
+
+        if (listaWaypoints != null && listaWaypoints.Count > 0)
+        {
+        
+            if (indiceWaypointAtual >= listaWaypoints.Count)
+            {
+                indiceWaypointAtual = listaWaypoints.Count - 1;
+            }
+
+            if (listaWaypoints[indiceWaypointAtual] != null)
+            {
+                alvoMovimento = listaWaypoints[indiceWaypointAtual];
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Player"))
         {
             estaNaAreaDeAtaque = true;
             if (rotinaDeAtaque == null)
             {
-                rotinaDeAtaque = StartCoroutine(ExecutarAtaqueESubir());
+                rotinaDeAtaque = StartCoroutine(ExecutarAtaque());
             }
         }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
@@ -50,30 +85,20 @@ public class MiniBoss : MonoBehaviour
             }
         }
     }
+
     public void MachucarMBoss(int danoParaReceber)
     {
-        vidaAtualDoMBoss-= danoParaReceber;
+        vidaAtualDoMBoss -= danoParaReceber;
 
         if(vidaAtualDoMBoss <= 0)
         {
             Destroy(this.gameObject);
         }
     }
-    void Update()
-    {
-        if (estaMovendo && alvoMovimento != null)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, alvoMovimento.position, velocidadeMovimento * Time.deltaTime);
 
-            if (Vector2.Distance(transform.position, alvoMovimento.position) < 0.1f)
-            {
-                estaMovendo = false;
-            }
-        }
-    }
-    private IEnumerator ExecutarAtaqueESubir()
+    private IEnumerator ExecutarAtaque()
     {
-            yield return new WaitForSeconds(tempoDeVerificarAtaque);
+        yield return new WaitForSeconds(tempoDeVerificarAtaque);
 
         if (estaNaAreaDeAtaque)
         {
@@ -82,11 +107,6 @@ public class MiniBoss : MonoBehaviour
             if (scriptBullet != null)
             {
                 scriptBullet.SetDirection(direcaoTiro);
-            }
-            if (pontosDeMovimento != null && pontosDeMovimento.Length > indicePontoDestinoAposAtacar)
-            {
-                alvoMovimento = pontosDeMovimento[indicePontoDestinoAposAtacar];
-                estaMovendo = true;
             }
             
             rotinaDeAtaque = null;
