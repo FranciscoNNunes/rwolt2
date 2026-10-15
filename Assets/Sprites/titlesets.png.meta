@@ -157,189 +157,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: titlesets_36
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 1024
-        width: 226
-        height: 236
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a99a487602d9aac4bb800cf5a6fe75b6
-      internalID: -1611003433
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: titlesets_39
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 1024
-        width: 192
-        height: 236
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 52179b1e5611d9240bbfbcf871d4083e
-      internalID: -1053953117
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: titlesets_40
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 1024
-        width: 222
-        height: 236
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f54bc1a02c72d284ab312928f0213133
-      internalID: 1830417588
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: titlesets_51
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 832
-        width: 222
-        height: 192
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7f164b2374aa3b5408e19ab1de5da485
-      internalID: -416067007
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: titlesets_58
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 832
-        width: 226
-        height: 192
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 93c4e071d1ceec742b55bb7e11c0769e
-      internalID: 492195507
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: titlesets_60
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 832
-        width: 192
-        height: 192
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 78532dfceb2ee3345927891b65711c5e
-      internalID: -1259109518
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: titlesets_80
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 620
-        width: 226
-        height: 212
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: da09a51c2c5319d4bac29c75a75f21ea
-      internalID: -1621146962
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: titlesets_83
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 620
-        width: 192
-        height: 212
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4696f257064ebbb459528b5cf977e3c6
-      internalID: -712380766
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: titlesets_84
       rect:
         serializedVersion: 2
-        x: 448
+        x: 31
         y: 620
-        width: 222
-        height: 212
+        width: 639
+        height: 640
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -360,8 +184,8 @@ TextureImporter:
         serializedVersion: 2
         x: 721
         y: 450
-        width: 224
-        height: 212
+        width: 529
+        height: 230
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
