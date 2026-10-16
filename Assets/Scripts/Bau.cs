@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Bau : MonoBehaviour
 {
@@ -24,7 +25,10 @@ public class Bau : MonoBehaviour
     {   
         if (collision.CompareTag("Player"))
         {
-            guiaBau.SetActive(true);
+            if (SceneManager.GetActiveScene().name == "Level 1")
+            {
+                guiaBau.SetActive(true);
+            }
             playerNoAlcance = true;
         }
     }

@@ -54,6 +54,11 @@ public class playerLogic : MonoBehaviour
     public float KBTime;
 
     public bool isKnockRight;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip somPulo;
+    [SerializeField] private AudioClip somDash;
+    [SerializeField] private AudioClip somAtaque;
+    [SerializeField] private AudioClip somHit;
     void Start()
     {
         Anim = GetComponent<Animator>();
@@ -74,6 +79,7 @@ public class playerLogic : MonoBehaviour
         {
 
             Anim.SetTrigger("Attack");
+            TocarSom(somAtaque);
         }
         GetInputMove();
         DirectionCheck();
@@ -146,24 +152,27 @@ public class playerLogic : MonoBehaviour
             }
         }
     }
-    public void TakeDamage(int danoParaReceber)
+public void TakeDamage(int danoParaReceber)
     {
-        if (temEscudo == false)
+        if (vida <= 0) return;
+
+        TocarSom(somHit);
+
+        if (!temEscudo)
         {
             vida -= danoParaReceber;
-            if(vida <= 0)
+            if (vida <= 0)
             {
-                deathState();
-                Anim.SetTrigger("Death");
+                vida = 0;
+                StartCoroutine(Morrer());
             }
         }
         else
         {
-            vida -= danoParaReceber;
-
-            if (vida <= 0)
+            vidaAtualDoEscudo -= danoParaReceber;
+            if (vidaAtualDoEscudo <= 0)
             {
-                escudo.SetActive(false);
+                if (escudo != null) escudo.SetActive(false);
                 temEscudo = false;
             }
         }
@@ -258,7 +267,7 @@ public class playerLogic : MonoBehaviour
         {
             rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x, jumpForce);
             jumpLes--;
-
+            TocarSom(somPulo);
         }   
     }
     void JumpAnim()
@@ -278,20 +287,43 @@ public class playerLogic : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
+        TocarSom(somDash);
+        
         float originalGravity = rb2d.gravityScale;
         rb2d.gravityScale = 0f;
         rb2d.linearVelocity = new Vector2(transform.localScale.x * dashingPower, 0f);
-        tr.emitting = true;
-        yield return new  WaitForSeconds(dashingTime);
-        tr.emitting = false;
+        
+        if (tr != null) tr.emitting = true;
+        yield return new WaitForSeconds(dashingTime);
+        if (tr != null) tr.emitting = false;
+        
         rb2d.gravityScale = originalGravity;
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldowm);
         canDash = true;
     }
 
-    void deathState()
+    private IEnumerator Morrer()
     {
-        GetComponent<playerLogic>().enabled = false;
+
+        Anim.SetTrigger("Death");
+
+        rb2d.linearVelocity = Vector2.zero;
+        rb2d.simulated = false;
+
+        Collider2D collider = GetComponent<Collider2D>();
+        if (collider != null) collider.enabled = false;
+
+        yield return new WaitForSeconds(2.0f);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        this.enabled = false;
+    }
+    private void TocarSom(AudioClip clip)
+    {
+        if (clip != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
     }
 }
