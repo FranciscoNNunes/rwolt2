@@ -15,7 +15,7 @@ public class MiniBoss : MonoBehaviour
     
     public float velocidadeMovimento = 5f;
     private Transform alvoMovimento = null;
-    private int indiceWaypointAtual = 0;
+    public int indiceWaypointAtual = 0;
 
     void Start()
     {

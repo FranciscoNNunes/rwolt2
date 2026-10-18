@@ -549,6 +549,7 @@ MonoBehaviour:
   bulletBoss: {fileID: 1404669573405607915, guid: 860a5ae71ea3fa64483273b5a2d0381a, type: 3}
   direcaoTiro: -1
   velocidadeMovimento: 5
+  indiceWaypointAtual: 0
 --- !u!50 &784359417
 Rigidbody2D:
   serializedVersion: 5
@@ -915,7 +916,7 @@ TilemapRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.9466667, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 1.534375, y: 0.21875, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -2035,6 +2036,7 @@ MonoBehaviour:
   bulletBoss: {fileID: 0}
   direcaoTiro: 1
   velocidadeMovimento: 5
+  indiceWaypointAtual: 0
 --- !u!212 &1339190027
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2225,6 +2227,7 @@ MonoBehaviour:
   bulletBoss: {fileID: 1404669573405607915, guid: 860a5ae71ea3fa64483273b5a2d0381a, type: 3}
   direcaoTiro: 1
   velocidadeMovimento: 5
+  indiceWaypointAtual: 1
 --- !u!50 &1776401933
 Rigidbody2D:
   serializedVersion: 5
@@ -2393,8 +2396,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   prefabWaypoint: {fileID: 5672399519488364197, guid: bf367d7fc52a9134b8292329743dd8a3, type: 3}
-  distanciaEntreWaypoints: 40
-  velocidadeSubidaWaypoints: 2
+  distanciaEntreWaypoints: 3
+  velocidadeSubidaWaypoints: 10
   maxWaypointsNaTela: 10
   waypointsAtivos: []
 --- !u!4 &2089184170
@@ -2406,7 +2409,7 @@ Transform:
   m_GameObject: {fileID: 2089184168}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 7.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

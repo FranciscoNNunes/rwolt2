@@ -12,6 +12,8 @@ public class GerenciadorWaypointsInfinitos : MonoBehaviour
     public List<Transform> waypointsAtivos = new List<Transform>();
     private float proximaAlturaSpawn;
 
+    private bool ladoDireito = true;
+
     public static bool pararGeracao = false;
 
     void Awake()
@@ -28,11 +30,11 @@ public class GerenciadorWaypointsInfinitos : MonoBehaviour
 
     void Start()
     {
-        proximaAlturaSpawn = transform.position.y;
+        proximaAlturaSpawn = transform.position.y + distanciaEntreWaypoints;
         
         for (int i = 0; i < maxWaypointsNaTela; i++)
         {
-            CriarNovoWaypoint();
+            CriarNovoWaypointInicial();
         }
     }
 
@@ -45,6 +47,12 @@ public class GerenciadorWaypointsInfinitos : MonoBehaviour
             {
                 waypointsAtivos[i].Translate(Vector3.up * velocidadeSubidaWaypoints * Time.deltaTime);
             }
+            if (waypointsAtivos[i].position.y > 30f)
+                {
+                    Destroy(waypointsAtivos[i].gameObject);
+                    waypointsAtivos.RemoveAt(i);
+                    CriarNovoWaypointNaBase();
+                }
             else
             {
                 waypointsAtivos.RemoveAt(i);
@@ -52,12 +60,38 @@ public class GerenciadorWaypointsInfinitos : MonoBehaviour
         }
     }
 
-    void CriarNovoWaypoint()
+    void CriarNovoWaypointInicial()
     {
-        Vector3 posicaoSpawn = new Vector3(transform.position.x + Random.Range(-3f, 3f), proximaAlturaSpawn, 0f);
+        float posX = ladoDireito ? 20f : -20f;
+
+        Vector3 posicaoSpawn = new Vector3(posX, proximaAlturaSpawn, 0f);
         GameObject novoPonto = Instantiate(prefabWaypoint, posicaoSpawn, Quaternion.identity);
         
         waypointsAtivos.Add(novoPonto.transform);
         proximaAlturaSpawn += distanciaEntreWaypoints;
+        ladoDireito = !ladoDireito;
+    }
+    void CriarNovoWaypointNaBase()
+    {
+        if (waypointsAtivos.Count > 0)
+        {
+        Transform waypointMaisBaixo = waypointsAtivos[0];
+            foreach (var wp in waypointsAtivos)
+            {
+                if (wp != null && wp.position.y < waypointMaisBaixo.position.y)
+                {
+                    waypointMaisBaixo = wp;
+                }
+            }
+
+            if (waypointMaisBaixo != null)
+            {
+                float posX = ladoDireito ? 20f : -20f;
+                Vector3 posicaoSpawn = new Vector3(posX , waypointMaisBaixo.position.y - distanciaEntreWaypoints, 0f);
+                GameObject novoPonto = Instantiate(prefabWaypoint, posicaoSpawn, Quaternion.identity);
+                waypointsAtivos.Add(novoPonto.transform);
+                ladoDireito = !ladoDireito;
+            }
+        }    
     }
 }
