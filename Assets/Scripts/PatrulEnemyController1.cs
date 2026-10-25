@@ -3,22 +3,23 @@ using UnityEngine;
 public class PatrulEnemyController1 : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private float speed = 3;
+    private float speed = -3;
+    private bool isActivaded = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        move();
+        if(isActivaded)
+        {
+            move();
+        }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void AtivarInimigo()
     {
-        speed *= -1;
-        flip();
+        isActivaded = true;
     }
     private void flip()
     {Vector3 currentScale = gameObject.transform.localScale;

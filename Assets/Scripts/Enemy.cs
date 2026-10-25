@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Hierarchy;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -20,6 +19,11 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         vidaAtualDoInimigo = vidaMaximaDoInimigo;
+
+        if(player == null)
+        {
+            player = FindFirstObjectByType<playerLogic>();
+        }
     }
 
     // Update is called once per frame
@@ -27,12 +31,15 @@ public class Enemy : MonoBehaviour
     {
         
     }
-    private void OnTriggerEnter2D(UnityEngine.Collider2D collision)
+    private void OnColiisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<playerLogic>().TakeDamage(danoParaDar);
-            Destroy(this.gameObject);
+            playerLogic playerScript = collision.gameObject.GetComponent<playerLogic>();
+            if(playerScript != null)
+            {
+                playerScript.TakeDamage(danoParaDar);
+            }
         }
     }
     public void MachucarInimigo(int danoParaReceber)
@@ -43,27 +50,12 @@ public class Enemy : MonoBehaviour
         {
             int numeroAleatorio = Random.Range(0, 100);
 
-            if(numeroAleatorio <= chanceParaDropar)
+            if(numeroAleatorio <= chanceParaDropar && itemParaDropar != null)
             { 
-                Instantiate(itemParaDropar,transform.position,Quaternion.Euler(0f, 0f, 0f));
+                Instantiate(itemParaDropar,transform.position,Quaternion.identity);
 
             }
             Destroy(this.gameObject);
-        }
-    }
-    private void OnColliderEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "Player")
-        {
-            player.KBCount = player.KBTime;
-            if(collision.transform.position.x <= transform.position.x)
-            {
-                player.isKnockRight = true;
-            }
-            if(collision.transform.position.x > transform.position.x)
-            {
-                player.isKnockRight = false;
-            }
         }
     }
 }

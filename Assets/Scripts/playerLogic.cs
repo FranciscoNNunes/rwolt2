@@ -36,6 +36,7 @@ public class playerLogic : MonoBehaviour
     public GameObject bullet;
     private bool isAttackCheck;
     private bool isgroundCheck;
+
     private bool canJump;
     private bool canDash = true;
     private bool isDashing;
@@ -227,7 +228,6 @@ public void TakeDamage(int danoParaReceber)
     void CheckArea() 
     {
         isgroundCheck = Physics2D.OverlapCircle(groundCheck.position, groundDist, groundLayer);
-
     }
     private void OnDrawGizmos()
     {
