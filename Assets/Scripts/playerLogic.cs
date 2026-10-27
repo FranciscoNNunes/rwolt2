@@ -9,7 +9,6 @@ using System.Collections.Generic;
 
 public class playerLogic : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
     public int vida;
     public int vidaMaxima;
     public GameObject escudo;
@@ -61,14 +60,31 @@ public class playerLogic : MonoBehaviour
     [SerializeField] private AudioClip somDash;
     [SerializeField] private AudioClip somAtaque;
     [SerializeField] private AudioClip somHit;
+
+    [Header("Squash and Stretch Config")]
+    [SerializeField] private Transform spriteTransform;
+    [SerializeField] private float jumpStretchX = 0.8f;
+    [SerializeField] private float jumpStretchY = 1.2f;
+    [SerializeField] private float landSquashX = 1.3f;
+    [SerializeField] private float landSquashY = 0.7f;
+    [SerializeField] private float deformationSpeed = 10f;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    private Vector3 originalScale;
+    private bool wasGrounded = true;
+    private bool isDeforming = false;
     void Start()
     {
-        Anim = GetComponent<Animator>();
+        Anim = GetComponentInChildren<Animator>();
         vidaAtualDoEscudo = vidaMaximaDoEscudo;
         rb2d = GetComponent<Rigidbody2D>();
         jumpLes = totaljump;
         temEscudo = false;
         escudo.SetActive(false);
+
+        if (spriteTransform == null)
+        spriteTransform = transform;
+
+        originalScale = spriteTransform.localScale;
     }
 
     void Update()
@@ -82,6 +98,10 @@ public class playerLogic : MonoBehaviour
 
             Anim.SetTrigger("Attack");
             TocarSom(somAtaque);
+        }
+        if (!isDeforming && spriteTransform != null)
+        {
+            spriteTransform.localScale = Vector3.Lerp(spriteTransform.localScale, originalScale, Time.deltaTime * deformationSpeed);
         }
         GetInputMove();
         DirectionCheck();
@@ -112,15 +132,15 @@ public class playerLogic : MonoBehaviour
             vida = vidaMaxima;
         }
     }
-        public void InstanciarNoUltimoFrame()
+   public void InstanciarNoUltimoFrame()
     {
-        if(bullet != null && LocalDeAttack != null)
-        {
+    if(bullet != null && LocalDeAttack != null)
+    {
         GameObject Bullet = Instantiate(bullet, LocalDeAttack.position, LocalDeAttack.rotation);
-
-        float direcaoAtual = transform.localScale.x > 0 ? 1f :-1f;
+        float direcaoAtual = isDirectionRight ? 1f : -1f;
+        
         Bullet.GetComponent<Bullet>().SetDirection(direcaoAtual);
-        }
+    }
     }
     void HealthLogic()
     {
@@ -228,10 +248,19 @@ public void TakeDamage(int danoParaReceber)
     }
     void CheckArea() 
     {
-        isgroundCheck = Physics2D.OverlapCircle(groundCheck.position, groundDist, groundLayer);
+        bool groundStatus = Physics2D.OverlapCircle(groundCheck.position, groundDist, groundLayer);
+
+        if(!wasGrounded && groundStatus)
+        {
+            float fallSpeed = Mathf.Abs(rb2d.linearVelocity.y);
+            TriggerLand(fallSpeed);
+        }
+        wasGrounded = groundStatus;
+        isgroundCheck = groundStatus;
     }
     private void OnDrawGizmos()
     {
+        if(groundCheck != null)
         Gizmos.DrawWireSphere(groundCheck.position, groundDist);
     }
     void DirectionCheck()
@@ -269,7 +298,44 @@ public void TakeDamage(int danoParaReceber)
             rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x, jumpForce);
             jumpLes--;
             TocarSom(somPulo);
+
+            StartCoroutine(ApplyDeformation(new Vector3(originalScale.x * jumpStretchX, originalScale.y * jumpStretchY, originalScale.z), 0.15f));
         }   
+    }
+    void TriggerLand(float fallVelocity)
+    {
+        float intensity = Mathf.Clamp(fallVelocity * 0.05f, 1f, 1.4f);
+        Vector3 targetSquash = new Vector3(
+            originalScale.x * (landSquashX * intensity), 
+            originalScale.y * (landSquashY / intensity), 
+            originalScale.z
+        );
+
+        StartCoroutine(ApplyDeformation(targetSquash, 0.2f));
+    }
+    private IEnumerator ApplyDeformation(Vector3 targetScale, float duration)
+    {
+        if (spriteTransform == null) yield break;
+
+        isDeforming = true;
+        float elapsed = 0f;
+        Vector3 startingScale = spriteTransform.localScale;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            spriteTransform.localScale = Vector3.Lerp(startingScale, targetScale, elapsed / duration);
+            yield return null;
+        }
+        elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            spriteTransform.localScale = Vector3.Lerp(targetScale, originalScale, elapsed / duration);
+            yield return null;
+        }
+
+        spriteTransform.localScale = originalScale;
+        isDeforming = false;
     }
     void JumpAnim()
     {
@@ -277,37 +343,34 @@ public void TakeDamage(int danoParaReceber)
         Anim.SetBool("GroundCheck", isgroundCheck);
     }
        void Flip()
-
     {
+    isDirectionRight = !isDirectionRight;
 
-        isDirectionRight = !isDirectionRight;
-
-        Vector3 escala = transform.localScale;
-
-        escala.x*= -1;
-
-        transform.localScale = escala;
+    if (spriteRenderer != null)
+    {
+        spriteRenderer.flipX = isDirectionRight;
+    }
     }
     private IEnumerator Dash()
-    {
-        canDash = false;
-        isDashing = true;
-        TocarSom(somDash);
-        
-        float originalGravity = rb2d.gravityScale;
-        rb2d.gravityScale = 0f;
-        rb2d.linearVelocity = new Vector2(transform.localScale.x * dashingPower, 0f);
-        
-        if (tr != null) tr.emitting = true;
-        yield return new WaitForSeconds(dashingTime);
-        if (tr != null) tr.emitting = false;
-        
-        rb2d.gravityScale = originalGravity;
-        isDashing = false;
-        yield return new WaitForSeconds(dashingCooldowm);
-        canDash = true;
-    }
-
+{
+    canDash = false;
+    isDashing = true;
+    TocarSom(somDash);
+    
+    float originalGravity = rb2d.gravityScale;
+    rb2d.gravityScale = 0f;
+    float direcaoDash = isDirectionRight ? 1f : -1f;
+    rb2d.linearVelocity = new Vector2(direcaoDash * dashingPower, 0f);
+    
+    if (tr != null) tr.emitting = true;
+    yield return new WaitForSeconds(dashingTime);
+    if (tr != null) tr.emitting = false;
+    
+    rb2d.gravityScale = originalGravity;
+    isDashing = false;
+    yield return new WaitForSeconds(dashingCooldowm);
+    canDash = true;
+}
     private IEnumerator Morrer()
     {
 

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7392941040114940259}
   - component: {fileID: 3894909412837242858}
   - component: {fileID: 4525864676797813098}
-  - component: {fileID: 1670494494746046092}
   - component: {fileID: 2905932533998528671}
   - component: {fileID: 7371455555432315512}
   m_Layer: 9
@@ -194,7 +193,7 @@ MonoBehaviour:
   moveSpeed: 10
   jumpForce: 15
   totaljump: 2
-  Anim: {fileID: 1670494494746046092}
+  Anim: {fileID: 0}
   temEscudo: 0
   vidaMaximaDoEscudo: 3
   vidaAtualDoEscudo: 0
@@ -210,28 +209,13 @@ MonoBehaviour:
   somDash: {fileID: 8300000, guid: 8ff2a2d7e79f81c40ac447512f879374, type: 3}
   somAtaque: {fileID: 8300000, guid: 323e15cfe809e114ab92c9f4b25e8bc2, type: 3}
   somHit: {fileID: 8300000, guid: 8b23b175a78d6b5458322e3a6c9905d0, type: 3}
---- !u!95 &1670494494746046092
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963596310114111660}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8bbeded448c5b534fa4a68fef2a31cb0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  spriteTransform: {fileID: 0}
+  jumpStretchX: 0.8
+  jumpStretchY: 1.2
+  landSquashX: 1.3
+  landSquashY: 0.7
+  deformationSpeed: 10
+  spriteRenderer: {fileID: 0}
 --- !u!61 &2905932533998528671
 BoxCollider2D:
   m_ObjectHideFlags: 0
