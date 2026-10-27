@@ -9,6 +9,7 @@ using System.Collections.Generic;
 
 public class playerLogic : MonoBehaviour
 {
+    private SpriteRenderer spriteRenderer;
     public int vida;
     public int vidaMaxima;
     public GameObject escudo;
@@ -259,7 +260,7 @@ public void TakeDamage(int danoParaReceber)
     }
     void MoveAnim()
     {
-        Anim.SetFloat("HorizontalAnim", Mathf.Abs(inputDirection));
+        Anim.SetFloat("HorizontalAnim",inputDirection);
     }
     void Jump() 
     {
@@ -275,13 +276,17 @@ public void TakeDamage(int danoParaReceber)
         Anim.SetFloat("VerticalAnim", rb2d.linearVelocity.y);
         Anim.SetBool("GroundCheck", isgroundCheck);
     }
-    void Flip() 
-    {
-        isDirectionRight = !isDirectionRight;
-        Vector3 escala = transform.localScale;
-        escala.x*= -1;
-        transform.localScale = escala;
+       void Flip()
 
+    {
+
+        isDirectionRight = !isDirectionRight;
+
+        Vector3 escala = transform.localScale;
+
+        escala.x*= -1;
+
+        transform.localScale = escala;
     }
     private IEnumerator Dash()
     {

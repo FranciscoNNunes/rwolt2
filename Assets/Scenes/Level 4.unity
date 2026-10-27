@@ -246,7 +246,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.3, y: 0.3, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -17495,6 +17495,10 @@ PrefabInstance:
       propertyPath: 'coracao.Array.data[5]'
       value: 
       objectReference: {fileID: 3449672564056863820}
+    - target: {fileID: 5756901022422587482, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6767254716037868093, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
       propertyPath: m_LocalPosition.y
       value: -1.6287
@@ -23901,6 +23905,10 @@ PrefabInstance:
     - target: {fileID: 6302818934820436597, guid: cecd313e7d5abcf4e83dc47e916d8415, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6544740401770752051, guid: cecd313e7d5abcf4e83dc47e916d8415, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -125.00052
       objectReference: {fileID: 0}
     - target: {fileID: 6737778776096739089, guid: cecd313e7d5abcf4e83dc47e916d8415, type: 3}
       propertyPath: m_Name
