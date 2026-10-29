@@ -20,7 +20,6 @@ public class MiniBoss : MonoBehaviour
     void Start()
     {
         vidaAtualDoMBoss = vidaMaximaDoMBoss;
-        
         DefinirProximoWaypoint();
     }
 
@@ -48,16 +47,15 @@ public class MiniBoss : MonoBehaviour
 
         if (listaWaypoints != null && listaWaypoints.Count > 0)
         {
-        
+            listaWaypoints.RemoveAll(wp => wp == null);
+
+            listaWaypoints.Sort((a, b) => a.position.y.CompareTo(b.position.y));
+
             if (indiceWaypointAtual >= listaWaypoints.Count)
             {
-                indiceWaypointAtual = listaWaypoints.Count - 1;
+                indiceWaypointAtual = 0;
             }
-
-            if (listaWaypoints[indiceWaypointAtual] != null)
-            {
                 alvoMovimento = listaWaypoints[indiceWaypointAtual];
-            }
         }
     }
 
@@ -98,18 +96,20 @@ public class MiniBoss : MonoBehaviour
 
     private IEnumerator ExecutarAtaque()
     {
-        yield return new WaitForSeconds(tempoDeVerificarAtaque);
-
-        if (estaNaAreaDeAtaque)
+        while (estaNaAreaDeAtaque)
         {
-            GameObject novaBullet = Instantiate(bulletBoss, transform.position, Quaternion.identity);
-            bulletBoss scriptBullet = novaBullet.GetComponent<bulletBoss>();
-            if (scriptBullet != null)
+            yield return new WaitForSeconds(tempoDeVerificarAtaque);
+
+            if(estaNaAreaDeAtaque && bulletBoss!= null)
             {
-                scriptBullet.SetDirection(direcaoTiro);
+                GameObject novaBullet = Instantiate(bulletBoss, transform.position, Quaternion.identity);
+                bulletBoss scriptBullet = novaBullet.GetComponent<bulletBoss>();
+                if (scriptBullet != null)
+                {
+                    scriptBullet.SetDirection(direcaoTiro);
+                }
             }
-            
-            rotinaDeAtaque = null;
         }
+        rotinaDeAtaque = null;
     }
 }

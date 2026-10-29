@@ -31,17 +31,19 @@ public class Enemy : MonoBehaviour
     {
         
     }
-    private void OnColiisionEnter2D(Collision2D collision)
+   private void OnCollisionEnter2D(Collision2D collision)
+{
+    Debug.Log("Colidiu com: " + collision.gameObject.name); // Vai mostrar no Console o nome de quem o inimigo encostou
+
+    if (collision.gameObject.CompareTag("Player"))
     {
-        if (collision.gameObject.CompareTag("Player"))
+        playerLogic playerScript = collision.gameObject.GetComponent<playerLogic>();
+        if(playerScript != null)
         {
-            playerLogic playerScript = collision.gameObject.GetComponent<playerLogic>();
-            if(playerScript != null)
-            {
-                playerScript.TakeDamage(danoParaDar);
-            }
+            playerScript.TakeDamage(danoParaDar);
         }
     }
+}
     public void MachucarInimigo(int danoParaReceber)
     {
         vidaAtualDoInimigo -= danoParaReceber;
