@@ -28,6 +28,15 @@ public class playerLogic : MonoBehaviour
     [SerializeField] private int totaljump;
 
     [SerializeField] private Animator Anim;
+
+    [SerializeField] private ParticleSystem dustParticles;
+
+    [SerializeField] private ParticleSystem jumpParticles;
+
+    [SerializeField] private Rigidbody2D rigidBody;
+
+    private Vector2 particlesStartPos;
+    private float xPosLastFrame;
     public bool temEscudo;
     public int vidaMaximaDoEscudo;
     public int vidaAtualDoEscudo;
@@ -85,6 +94,8 @@ public class playerLogic : MonoBehaviour
         spriteTransform = transform;
 
         originalScale = spriteTransform.localScale;
+
+        particlesStartPos = dustParticles.transform.localPosition;
     }
 
     void Update()
@@ -103,6 +114,7 @@ public class playerLogic : MonoBehaviour
         {
             spriteTransform.localScale = Vector3.Lerp(spriteTransform.localScale, originalScale, Time.deltaTime * deformationSpeed);
         }
+        StartStopParticles();
         GetInputMove();
         DirectionCheck();
         CanJump();
@@ -114,6 +126,7 @@ public class playerLogic : MonoBehaviour
             StartCoroutine(Dash());
             Anim.SetTrigger("Dash");
         }
+        xPosLastFrame = transform.position.x;
     }
     public void AtivarEscudo()
     {
@@ -298,7 +311,7 @@ public void TakeDamage(int danoParaReceber)
             rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x, jumpForce);
             jumpLes--;
             TocarSom(somPulo);
-
+            jumpParticles.Play();
             StartCoroutine(ApplyDeformation(new Vector3(originalScale.x * jumpStretchX, originalScale.y * jumpStretchY, originalScale.z), 0.15f));
         }   
     }
@@ -347,9 +360,36 @@ public void TakeDamage(int danoParaReceber)
     isDirectionRight = !isDirectionRight;
 
     if (spriteRenderer != null)
-    {
-        spriteRenderer.flipX = isDirectionRight;
+        {
+            spriteRenderer.flipX = isDirectionRight;
+        }
+    Vector2 particlesPos = particlesStartPos;
+        if(isDirectionRight)
+        {
+            dustParticles.transform.localPosition = particlesStartPos;
+            dustParticles.transform.rotation = Quaternion.Euler(0,0,0);
+        }
+        else
+        {
+            particlesPos.x *= -1f;
+            dustParticles.transform.localPosition = particlesPos;
+            dustParticles.transform.rotation = Quaternion.Euler(0,180,0);
+        }
     }
+    private void StartStopParticles()
+    {
+        bool isMovingHorizontally = Mathf.Abs(rb2d.linearVelocity.x) > 0.1f;
+        if(isgroundCheck && isMovingHorizontally)
+        {
+            if(!dustParticles.isPlaying)
+            {
+                dustParticles.Play();
+            }
+        }
+        else
+        {
+            dustParticles.Stop();
+        }
     }
     private IEnumerator Dash()
 {

@@ -40,10 +40,5 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if (collision.gameObject.CompareTag("MBoss"))
-        {
-                collision.gameObject.GetComponent<MiniBoss>().MachucarMBoss(danoParaDar);
-                Destroy(gameObject);
-        }
     }
 }
