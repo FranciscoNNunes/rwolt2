@@ -31,12 +31,19 @@ public class Enemy : MonoBehaviour
     {
         
     }
-   private void OnCollisionEnter2D(Collision2D collision)
+   private void OnTriggerEnter2D(Collider2D collision)
 {
-    Debug.Log("Colidiu com: " + collision.gameObject.name); // Vai mostrar no Console o nome de quem o inimigo encostou
-
     if (collision.gameObject.CompareTag("Player"))
     {
+        player.KBCount = player.KBTime;
+        if(collision.transform.position.x <= transform.position.x)
+        {
+            player.isKnockRight = true;
+        }
+        if(collision.transform.position.x <= transform.position.x)
+        {
+            player.isKnockRight = false;
+        }
         playerLogic playerScript = collision.gameObject.GetComponent<playerLogic>();
         if(playerScript != null)
         {

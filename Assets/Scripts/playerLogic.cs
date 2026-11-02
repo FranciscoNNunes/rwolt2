@@ -21,7 +21,7 @@ public class playerLogic : MonoBehaviour
 
     [SerializeField] private LayerMask groundLayer;
 
-    [SerializeField] private float moveSpeed;
+    [SerializeField] public float moveSpeed;
 
     [SerializeField] private float jumpForce;
 
