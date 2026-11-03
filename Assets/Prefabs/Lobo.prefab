@@ -206,9 +206,9 @@ MonoBehaviour:
   LocalDeAttack: {fileID: 2379847775500008238}
   bullet: {fileID: 5302096637638078126, guid: fb56b2a9a69cd064480248aeabedfdee, type: 3}
   tr: {fileID: 7371455555432315512}
-  KBForce: 0
-  KBCount: 0.7
-  KBTime: 0
+  KBForce: 6
+  KBCount: 0
+  KBTime: 0.2
   isKnockRight: 0
   audioSource: {fileID: 2284054546060092407, guid: 5ad1cd6b953e3de4789d33f4b99927fb, type: 3}
   somPulo: {fileID: 8300000, guid: 4e349dc959014a845b9aa317d1c2b7f0, type: 3}

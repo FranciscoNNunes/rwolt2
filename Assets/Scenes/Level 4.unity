@@ -17862,18 +17862,6 @@ PrefabInstance:
       value: Lobo
       objectReference: {fileID: 0}
     - target: {fileID: 4525864676797813098, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
-      propertyPath: KBTime
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4525864676797813098, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
-      propertyPath: KBCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4525864676797813098, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
-      propertyPath: KBForce
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4525864676797813098, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
       propertyPath: 'coracao.Array.data[0]'
       value: 
       objectReference: {fileID: 6645809067282263966}

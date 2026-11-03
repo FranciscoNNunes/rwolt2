@@ -6,7 +6,7 @@ public class bulletBoss : MonoBehaviour
 {
     [SerializeField]private float bulletvelocity;
     public int danoParaDar;
-    private float direction = 1f;
+    private float direction = -1f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,7 +33,7 @@ public class bulletBoss : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            playerLogic player = collision.gameObject.GetComponent<playerLogic>();
+            vidaDoJogadorBossFinal player = collision.gameObject.GetComponent<vidaDoJogadorBossFinal>();
             if (player != null)
             {
                 player.TakeDamage(danoParaDar);
