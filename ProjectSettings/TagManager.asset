@@ -8,6 +8,8 @@ TagManager:
   - Bau
   - Ground
   - MBoss
+  - bulletBoss
+  - bulletPFinalBoss
   layers:
   - Default
   - TransparentFX

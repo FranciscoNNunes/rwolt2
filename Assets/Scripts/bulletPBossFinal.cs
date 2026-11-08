@@ -24,9 +24,13 @@ public class bulletPBossFinal : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("MBoss"))
         {
-                collision.gameObject.GetComponent<Enemy>().MachucarInimigo(danoParaDar);
+                collision.gameObject.GetComponent<MBoss>().MachucarInimigo(danoParaDar);
+                Destroy(this.gameObject);
+        }
+        if (collision.gameObject.CompareTag("bulletBoss"))
+        {
                 Destroy(this.gameObject);
         }
     }

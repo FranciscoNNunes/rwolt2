@@ -5,17 +5,66 @@ public class MBoss : MonoBehaviour
     public float speed = 3f;
     public float height = 3.5f;
     public float phaseOffset = 0f;
-    public float startY;
+
+    private Vector2 centerPoint;
+    
+    public float vidaMaximaDoInimigo;
+
+    public float vidaAtualDoInimigo;
+
+    public int danoParaDar;
+
+    public int chanceParaDropar;
+
+    public GameObject itemParaDropar;
+
+    private playerLogic player;
     void Start()
     {
-        startY = transform.position.y;
+        centerPoint = new Vector2(transform.position.x, transform.position.y);
+        vidaAtualDoInimigo = vidaMaximaDoInimigo;
+
+        if(player == null)
+        {
+            player = FindFirstObjectByType<playerLogic>();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        float newY = startY + Mathf.Sin(Time.time * speed + phaseOffset) * height;
+        float angle = Time.time * speed + phaseOffset;
+        float newY = centerPoint.y + Mathf.Sin(angle) * height;
 
-        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+        transform.position = new Vector3(centerPoint.x, newY, transform.position.z);
+    }
+
+   private void OnTriggerEnter2D(Collider2D collision)
+    {
+    if (collision.gameObject.CompareTag("Player"))
+    {
+        if(player != null)
+        {   
+            player.KBCount = player.KBTime;
+            player.isKnockRight = (collision.transform.position.x > transform.position.x);
+            player.TakeDamage(danoParaDar);
+        }
+    }
+    }
+    public void MachucarInimigo(int danoParaReceber)
+    {
+        vidaAtualDoInimigo -= danoParaReceber;
+
+        if(vidaAtualDoInimigo <= 0)
+        {
+            int numeroAleatorio = Random.Range(0, 100);
+
+            if(numeroAleatorio <= chanceParaDropar && itemParaDropar != null)
+            { 
+                Instantiate(itemParaDropar,transform.position,Quaternion.identity);
+
+            }
+            Destroy(this.gameObject);
+        }
     }
 }
