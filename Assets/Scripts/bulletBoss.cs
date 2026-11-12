@@ -44,8 +44,8 @@ public class bulletBoss : MonoBehaviour
     private void OnColliderEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
-    {
+        {
         Destroy(gameObject);
-    }
+        }
     }
 }
