@@ -6,28 +6,37 @@ public class MovimentacaoDoIV : MonoBehaviour
 
     private int pontoAtual;
 
-    [SerializeField]    private float velocidadeDeMovimento;
-
-    private float ultimaPosicaoX;
+    [SerializeField] private float velocidadeDeMovimento;
+    [SerializeField] private float amplitudeOscilacao = 0.5f;
+    [SerializeField] private float frequenciaOscilacao = 5; 
 
     void Start()
     {
         pontoAtual = 0;
+        if(pontosDoCaminho.Length > 0)
+        {
         transform.position = pontosDoCaminho[pontoAtual].position;
+        }
     }
     void Update()
     {
+        if(pontosDoCaminho.Length == 0) return;
         flipHorizontal();
         MovimentarInimigo();
     }
-    private void MovimentarInimigo()
+    public void MovimentarInimigo()
     {
-        transform.position = Vector2.MoveTowards(transform.position, pontosDoCaminho[pontoAtual].position, velocidadeDeMovimento * Time.deltaTime);
-        if(transform.position == pontosDoCaminho[pontoAtual].position)
-        {
-            pontoAtual += 1;
+        Transform alvo = pontosDoCaminho[pontoAtual];
 
-            ultimaPosicaoX = transform.localPosition.x;  
+        Vector2 novaPosicao = Vector2.MoveTowards(transform.position, alvo.position, velocidadeDeMovimento * Time.deltaTime);
+
+        float oscilacaoY = Mathf.Sin(Time.time * frequenciaOscilacao) * amplitudeOscilacao * Time.deltaTime;
+        
+        transform.position = novaPosicao;
+        if(Vector2.Distance(transform.position, alvo.position) < 0.1f )
+        {
+            transform.position = alvo.position;
+            pontoAtual++;
 
             if(pontoAtual >= pontosDoCaminho.Length)
             {
@@ -35,13 +44,15 @@ public class MovimentacaoDoIV : MonoBehaviour
             }
         }
     }
-    private void flipHorizontal()
+    public void flipHorizontal()
     {
-        if(transform.localPosition.x < ultimaPosicaoX)
+        Transform alvo = pontosDoCaminho[pontoAtual];
+
+        if(alvo.position.x < transform.position.x)
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
-        else if (transform.localPosition.x > ultimaPosicaoX)
+        else if (alvo.position.x > transform.position.x)
         {
             transform.localScale = new Vector3(-1f, 1f,1f);
         }

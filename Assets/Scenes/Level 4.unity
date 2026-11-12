@@ -6191,6 +6191,8 @@ MonoBehaviour:
   - {fileID: 1077105460}
   - {fileID: 2079478564}
   velocidadeDeMovimento: 5
+  amplitudeOscilacao: 0.5
+  frequenciaOscilacao: 5
 --- !u!1 &161298332
 GameObject:
   m_ObjectHideFlags: 0
@@ -11381,6 +11383,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   player: {fileID: 1513445417}
+  persegueJogador: 0
+  velocidadeDoInimigo: 3
+  distanciaDaVisao: 5
   vidaMaximaDoInimigo: 2
   vidaAtualDoInimigo: 0
   danoParaDar: 1
@@ -12235,6 +12240,8 @@ MonoBehaviour:
   - {fileID: 281376967}
   - {fileID: 324060706}
   velocidadeDeMovimento: 5
+  amplitudeOscilacao: 0.5
+  frequenciaOscilacao: 5
 --- !u!1 &598859528
 GameObject:
   m_ObjectHideFlags: 0
@@ -17938,6 +17945,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   player: {fileID: 1513445417}
+  persegueJogador: 0
+  velocidadeDoInimigo: 3
+  distanciaDaVisao: 5
   vidaMaximaDoInimigo: 2
   vidaAtualDoInimigo: 0
   danoParaDar: 1
@@ -18635,6 +18645,8 @@ MonoBehaviour:
   - {fileID: 484808489}
   - {fileID: 374057091}
   velocidadeDeMovimento: 5
+  amplitudeOscilacao: 0.5
+  frequenciaOscilacao: 5
 --- !u!1 &1129119105
 GameObject:
   m_ObjectHideFlags: 0
@@ -18684,6 +18696,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   player: {fileID: 1513445417}
+  persegueJogador: 0
+  velocidadeDoInimigo: 3
+  distanciaDaVisao: 5
   vidaMaximaDoInimigo: 2
   vidaAtualDoInimigo: 0
   danoParaDar: 1
@@ -19504,7 +19519,7 @@ GameObject:
   - component: {fileID: 1544080047}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19518,7 +19533,7 @@ Transform:
   m_GameObject: {fileID: 1544080042}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.27, y: 0.76, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19617,6 +19632,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   player: {fileID: 1513445417}
+  persegueJogador: 1
+  velocidadeDoInimigo: 3
+  distanciaDaVisao: 10
   vidaMaximaDoInimigo: 2
   vidaAtualDoInimigo: 0
   danoParaDar: 1
@@ -19656,7 +19674,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.75450134, y: -1.6357818}
+  m_Offset: {x: 0.0286026, y: 0.049006462}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -19666,7 +19684,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 31.252869, y: 14.77645}
+  m_Size: {x: 2.0945282, y: 1.3861265}
   m_EdgeRadius: 0
 --- !u!50 &1544080048
 Rigidbody2D:
@@ -19694,7 +19712,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &1607170252
 GameObject:
   m_ObjectHideFlags: 0
@@ -19914,6 +19932,8 @@ MonoBehaviour:
   - {fileID: 980550994}
   - {fileID: 241481285}
   velocidadeDeMovimento: 5
+  amplitudeOscilacao: 0.5
+  frequenciaOscilacao: 5
 --- !u!1 &1839760571
 GameObject:
   m_ObjectHideFlags: 0
