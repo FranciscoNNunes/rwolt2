@@ -18,15 +18,20 @@ public class MBoss : MonoBehaviour
 
     public GameObject itemParaDropar;
 
-    private playerLogic player;
+    private vidaDoJogadorBossFinal playerVida;
+
+    private bool isPhaseTwo = false;
+
+    public bulletMBoss atiradorFaseUm;
+    public bossChargeAttack atiradorFaseDois;
     void Start()
     {
         centerPoint = new Vector2(transform.position.x, transform.position.y);
         vidaAtualDoInimigo = vidaMaximaDoInimigo;
 
-        if(player == null)
+        if(playerVida == null)
         {
-            player = FindFirstObjectByType<playerLogic>();
+            playerVida = FindFirstObjectByType<vidaDoJogadorBossFinal>();
         }
     }
 
@@ -43,17 +48,20 @@ public class MBoss : MonoBehaviour
     {
     if (collision.gameObject.CompareTag("Player"))
     {
-        if(player != null)
+        if(playerVida != null)
         {   
-            player.KBCount = player.KBTime;
-            player.isKnockRight = (collision.transform.position.x > transform.position.x);
-            player.TakeDamage(danoParaDar);
+            playerVida.TakeDamage(danoParaDar);
         }
     }
     }
     public void MachucarInimigo(int danoParaReceber)
     {
         vidaAtualDoInimigo -= danoParaReceber;
+
+        if(!isPhaseTwo && vidaAtualDoInimigo <= vidaMaximaDoInimigo / 2f)
+        {
+            entrarNaFaseDois();
+        }
 
         if(vidaAtualDoInimigo <= 0)
         {
@@ -65,6 +73,21 @@ public class MBoss : MonoBehaviour
 
             }
             Destroy(this.gameObject);
+        }
+    }
+    void entrarNaFaseDois()
+    {
+        isPhaseTwo = true;
+
+        speed *= 1.3f;
+
+        if(atiradorFaseUm != null)
+        {
+            atiradorFaseUm.enabled = false;
+        }
+        if(atiradorFaseDois != null)
+        {
+            atiradorFaseDois.AtivarFaseDoisAtaque();
         }
     }
 }

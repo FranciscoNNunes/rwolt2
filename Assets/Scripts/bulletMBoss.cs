@@ -59,7 +59,7 @@ public class bulletMBoss : MonoBehaviour
         if (bulletCount <= 1)
         {
             Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, baseAngle));
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, rotation);
         }
         else
         {

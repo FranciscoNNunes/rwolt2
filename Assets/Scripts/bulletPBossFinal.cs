@@ -34,4 +34,8 @@ public class bulletPBossFinal : MonoBehaviour
                 Destroy(this.gameObject);
         }
     }
+    private void OnBecameInvisible()
+    {
+        gameObject.SetActive(false);
+    }
 }
