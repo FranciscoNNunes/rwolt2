@@ -11,8 +11,8 @@ public class bossChargeAttack : MonoBehaviour
     public float highSpeed = 25f;
     public float attackCooldown = 3f;
 
-    public float minAngle = -45f;
-    public float maxAngle = 45f;
+    public float minAngle = -30f;
+    public float maxAngle = 30f;
 
     private Transform playerTransform;
     private bool isAttacking = false;
@@ -31,14 +31,10 @@ public class bossChargeAttack : MonoBehaviour
     void Update()
     {
         
-        if(playerTransform == null || isAttacking) return;
+        if(!canAttack || playerTransform == null || isAttacking) return;
 
-        float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
+        StartCoroutine(ChargeAndShootRoutine());
 
-        if(distanceToPlayer <= detectionRange)
-        {
-            StartCoroutine(ChargeAndShootRoutine());
-        }
     }
     public void AtivarFaseDoisAtaque()
     {
@@ -50,19 +46,9 @@ public class bossChargeAttack : MonoBehaviour
         List<GameObject> chargedBullets = new List<GameObject>();
         float spreadAngle = 30f;
 
-        Vector2 direction = (playerTransform.position - firePoint.position).normalized;
-        float baseAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-        baseAngle = Mathf.Clamp(baseAngle, minAngle, maxAngle);
-
         for(int i = 0; i < 3; i++)
         {
-            float halfAngle = spreadAngle / 2f;
-            float angleStep = spreadAngle / 2f;
-            float currentAngle = (baseAngle - halfAngle) + (angleStep * i);
-            Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, currentAngle));
-
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, rotation, firePoint);
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation, firePoint);
 
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             if (rb != null) rb.simulated = false;
@@ -75,18 +61,58 @@ public class bossChargeAttack : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            foreach (GameObject b in chargedBullets)
+        if(playerTransform != null)
+        {
+            Vector2 direction = (playerTransform.position - firePoint.position).normalized;
+            float baseAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+            float halfAngle = spreadAngle / 2f;
+            float angleStep = spreadAngle / 2f;
+
+            for (int i = 0; i < chargedBullets.Count; i++)
             {
-                if (b != null)
+                if(chargedBullets[i] != null)
                 {
+                    float currentAngle = (baseAngle - halfAngle) + (angleStep * i);
+                    chargedBullets[i].transform.rotation = Quaternion.Euler(new Vector3(0, 0, currentAngle));
+                
                     Vector3 randomOffset = (Vector3)Random.insideUnitCircle * 0.05f;
-                    b.transform.localPosition = Vector3.zero + randomOffset;
+                    chargedBullets[i].transform.localPosition = Vector3.zero + randomOffset;
                 }
             }
+        }   
 
             yield return null;
         }
 
+        bool playerInSight = false;
+        while (!playerInSight)
+        {
+            if(playerTransform != null)
+            {
+                float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
+
+                Vector2 direction = (playerTransform.position - firePoint.position).normalized;
+                float baseAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                float halfAngle = spreadAngle / 2f;
+                float angleStep = spreadAngle / 2f;
+
+                for(int i = 0; i < chargedBullets.Count; i++)
+                {
+                    if(chargedBullets[i] != null)
+                    {
+                        float currentAngle = (baseAngle - halfAngle) + (angleStep * i);
+                        chargedBullets[i].transform.rotation = Quaternion.Euler(new Vector3(0, 0, currentAngle));
+                    }
+                }
+            
+                if(distanceToPlayer <= detectionRange)
+                {
+                    playerInSight = true;
+                }
+            }
+            yield return null;
+        }
         foreach (GameObject bullet in chargedBullets)
         {
             if(bullet != null)
@@ -97,7 +123,6 @@ public class bossChargeAttack : MonoBehaviour
                 if(rb != null)
                 {
                     rb.simulated = true;
-
                     rb.linearVelocity = bullet.transform.right * highSpeed;
                 }
             }

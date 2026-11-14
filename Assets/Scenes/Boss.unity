@@ -1737,12 +1737,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::bossChargeAttack
   bulletPrefab: {fileID: 1735615273744831223, guid: c960f52d2be9cdd46a982dfad81038a8, type: 3}
   firePoint: {fileID: 132696234}
-  detectionRange: 20
+  detectionRange: 25
   chargeTime: 1.2
   highSpeed: 25
   attackCooldown: 3
-  minAngle: 0
-  maxAngle: 180
+  minAngle: -30
+  maxAngle: 30
 --- !u!1 &502296784
 GameObject:
   m_ObjectHideFlags: 0
@@ -6249,8 +6249,8 @@ MonoBehaviour:
   chargeTime: 1.2
   highSpeed: 25
   attackCooldown: 3
-  minAngle: 0
-  maxAngle: -180
+  minAngle: -30
+  maxAngle: 30
 --- !u!1 &1918117667
 GameObject:
   m_ObjectHideFlags: 0
