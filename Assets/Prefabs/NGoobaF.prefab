@@ -331,6 +331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   player: {fileID: 0}
   persegueJogador: 0
+  inimigoVoador: 0
   velocidadeDoInimigo: 3
   distanciaDaVisao: 5
   vidaMaximaDoInimigo: 2

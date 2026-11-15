@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     public playerLogic player;
 
     public bool persegueJogador = false;
+    public bool inimigoVoador = true;
     public float velocidadeDoInimigo = 3f;
     public float distanciaDaVisao = 5f;
 
@@ -20,9 +21,11 @@ public class Enemy : MonoBehaviour
 
     public GameObject itemParaDropar;
 
+    private Animator anim;
     void Start()
     {
         vidaAtualDoInimigo = vidaMaximaDoInimigo;
+        anim = GetComponent<Animator>();
 
         if(player == null)
         {
@@ -50,10 +53,11 @@ public class Enemy : MonoBehaviour
     }
     private void SeguirJogador()
     {
-        Vector2 direcao = (player.transform.position - transform.position).normalized;
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, velocidadeDoInimigo * Time.deltaTime);
-
-        transform.position += new Vector3(0, Mathf.Sin(Time.time * 5f) * 0.02f, 0);
+        if(inimigoVoador)
+        {
+            transform.position += new Vector3(0, Mathf.Sin(Time.time * 5f) * 0.02f, 0);
+        }
     }
    private void OnTriggerEnter2D(Collider2D collision)
 {
@@ -62,7 +66,8 @@ public class Enemy : MonoBehaviour
         playerLogic playerScript = collision.gameObject.GetComponent<playerLogic>();
         if(playerScript != null)
         {
-        
+        if(anim != null) anim.SetTrigger("Attack");
+            
         player.KBCount = player.KBTime;
 
         if(collision.transform.position.x <= transform.position.x)
@@ -83,6 +88,12 @@ public class Enemy : MonoBehaviour
 
         if(vidaAtualDoInimigo <= 0)
         {
+            if(anim != null) anim.SetTrigger("Death");
+
+            enabled = false;
+            Collider2D col = GetComponent<Collider2D>();
+            if(col != null) col.enabled = false;
+
             int numeroAleatorio = Random.Range(0, 100);
 
             if(numeroAleatorio <= chanceParaDropar && itemParaDropar != null)
@@ -91,6 +102,10 @@ public class Enemy : MonoBehaviour
 
             }
             Destroy(this.gameObject);
+        }
+        else
+        {
+            if(anim != null) anim.SetTrigger("Hit");
         }
     }
 }
