@@ -1524,6 +1524,7 @@ GameObject:
   - component: {fileID: 465488724}
   - component: {fileID: 465488727}
   - component: {fileID: 465488730}
+  - component: {fileID: 465488731}
   - component: {fileID: 465488729}
   - component: {fileID: 465488728}
   m_Layer: 0
@@ -1555,6 +1556,7 @@ MonoBehaviour:
   itemParaDropar: {fileID: 3975691518137690750, guid: bc6184c73f3385148a08e43d6833dc9c, type: 3}
   atiradorFaseUm: {fileID: 465488727}
   atiradorFaseDois: {fileID: 465488730}
+  ataqueSupremo: {fileID: 465488731}
 --- !u!212 &465488725
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1743,6 +1745,23 @@ MonoBehaviour:
   attackCooldown: 3
   minAngle: -30
   maxAngle: 30
+--- !u!114 &465488731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465488723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c080391731ef7428825e09ef051069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::bossUltimateAttack
+  bulletPrefab: {fileID: 1735615273744831223, guid: c960f52d2be9cdd46a982dfad81038a8, type: 3}
+  firePoint: {fileID: 132696234}
+  warningTime: 2
+  bulletSpeed: 8
+  attackCooldown: 5
 --- !u!1 &502296784
 GameObject:
   m_ObjectHideFlags: 0
@@ -6032,6 +6051,7 @@ GameObject:
   - component: {fileID: 1883276567}
   - component: {fileID: 1883276570}
   - component: {fileID: 1883276573}
+  - component: {fileID: 1883276574}
   - component: {fileID: 1883276572}
   - component: {fileID: 1883276571}
   m_Layer: 0
@@ -6063,6 +6083,7 @@ MonoBehaviour:
   itemParaDropar: {fileID: 3975691518137690750, guid: bc6184c73f3385148a08e43d6833dc9c, type: 3}
   atiradorFaseUm: {fileID: 1883276570}
   atiradorFaseDois: {fileID: 1883276573}
+  ataqueSupremo: {fileID: 1883276574}
 --- !u!212 &1883276568
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6251,6 +6272,23 @@ MonoBehaviour:
   attackCooldown: 3
   minAngle: -30
   maxAngle: 30
+--- !u!114 &1883276574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883276566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c080391731ef7428825e09ef051069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::bossUltimateAttack
+  bulletPrefab: {fileID: 1735615273744831223, guid: c960f52d2be9cdd46a982dfad81038a8, type: 3}
+  firePoint: {fileID: 764456203}
+  warningTime: 2
+  bulletSpeed: 8
+  attackCooldown: 5
 --- !u!1 &1918117667
 GameObject:
   m_ObjectHideFlags: 0

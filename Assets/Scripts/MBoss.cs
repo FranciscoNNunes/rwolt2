@@ -21,9 +21,11 @@ public class MBoss : MonoBehaviour
     private vidaDoJogadorBossFinal playerVida;
 
     private bool isPhaseTwo = false;
+    private bool isPhaseThree = false;
 
     public bulletMBoss atiradorFaseUm;
     public bossChargeAttack atiradorFaseDois;
+    public bossUltimateAttack ataqueSupremo; 
     void Start()
     {
         centerPoint = new Vector2(transform.position.x, transform.position.y);
@@ -62,7 +64,10 @@ public class MBoss : MonoBehaviour
         {
             entrarNaFaseDois();
         }
-
+        if(!isPhaseThree && vidaAtualDoInimigo <= vidaMaximaDoInimigo * 0.2f)
+        {
+            entrarNaFaseTres();
+        }
         if(vidaAtualDoInimigo <= 0)
         {
             int numeroAleatorio = Random.Range(0, 100);
@@ -88,6 +93,16 @@ public class MBoss : MonoBehaviour
         if(atiradorFaseDois != null)
         {
             atiradorFaseDois.AtivarFaseDoisAtaque();
+        }
+    }
+    void entrarNaFaseTres()
+    {
+        isPhaseThree = true;
+        speed *= 1.2f;
+
+        if(ataqueSupremo != null)
+        {
+            ataqueSupremo.AtivarFaseTres();
         }
     }
 }
