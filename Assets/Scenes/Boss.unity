@@ -1246,7 +1246,7 @@ GameObject:
   - component: {fileID: 312709448}
   - component: {fileID: 312709447}
   m_Layer: 0
-  m_Name: SwapnGearManagger
+  m_Name: SpawnGearManagger
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

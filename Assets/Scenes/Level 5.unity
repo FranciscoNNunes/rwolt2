@@ -5505,6 +5505,26 @@ PrefabInstance:
       propertyPath: 'coracao.Array.data[5]'
       value: 
       objectReference: {fileID: 2021316956}
+    - target: {fileID: 5528832028564412484, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
+      propertyPath: m_Size.y
+      value: 3.272787
+      objectReference: {fileID: 0}
+    - target: {fileID: 5528832028564412484, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5528832028564412484, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5528832028564412484, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5528832028564412484, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7530286144167716562, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
       propertyPath: m_IsActive
       value: 0
