@@ -8,6 +8,8 @@ public class AreaDeAtaqueDoInimigo : MonoBehaviour
     private bool estaNaAreaDeAtaque;
     public float tempoDeVerificarAtaque = 1.0f;
     private Coroutine rotinaDeAtaque;
+
+    [SerializeField] private Animator Anim;
     void Start()
     {
         
@@ -39,7 +41,7 @@ public class AreaDeAtaqueDoInimigo : MonoBehaviour
     private IEnumerator ExecutarAtaqueComAtraso(Collider2D playerCollider)
     {
             yield return new WaitForSeconds(tempoDeVerificarAtaque);
-
+            Anim.SetTrigger("Attack");
             if (estaNaAreaDeAtaque && playerCollider != null)
         {
             playerLogic player = playerCollider.GetComponent<playerLogic>();

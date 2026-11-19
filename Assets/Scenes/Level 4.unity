@@ -17395,6 +17395,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lobo
       objectReference: {fileID: 0}
+    - target: {fileID: 2974233264426835284, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 4525864676797813098, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
       propertyPath: 'coracao.Array.data[0]'
       value: 
@@ -17445,11 +17449,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7832141691522925302, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 228.9
+      value: 3.4
       objectReference: {fileID: 0}
     - target: {fileID: 7832141691522925302, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.3
+      value: -6.2
       objectReference: {fileID: 0}
     - target: {fileID: 7832141691522925302, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -17595,13 +17599,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NpcDialogue
   dialogueNpc:
   - "Ola, aonde voc\xEA est\xE1 indo?"
-  - "Ao castelo? O que voc\xEA tem na cabe\xE7a, na unica vez que fui l\xE1 tive
-    meu bra\xE7o cortado"
+  - "Ao castelo? O que voc\xEA tem na cabe\xE7a, na \xFAnica vez que fui l\xE1 tive
+    meu bra\xE7o cortado."
   - "Vai salvar seu irm\xE3o, voc\xEA?"
-  - "Bom, j\xE1 que n\xE3o vou mudar sua cabe\xE7a tome vai precisar"
+  - "Bom, j\xE1 que n\xE3o vou mudar sua cabe\xE7a, tome vai precisar."
   - -"Espada de fogo obtida"
-  - Use com cuidado
-  - Adeus viajante
+  - Use com cuidado.
+  - Adeus viajante.
   dialogueIndex: 0
   dialoguePanel: {fileID: 1241142838}
   dialogueText: {fileID: 2077855546}
@@ -17780,7 +17784,7 @@ Transform:
   m_GameObject: {fileID: 978792823}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 228.9, y: 3.1000006, z: -10}
+  m_LocalPosition: {x: 3.3999996, y: -0.79999924, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19487,8 +19491,8 @@ Transform:
   m_GameObject: {fileID: 2080056892}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 209.068, y: 5.5, z: 0}
-  m_LocalScale: {x: 1.0027, y: 0.994, z: 1}
+  m_LocalPosition: {x: 209, y: 5.5, z: 0}
+  m_LocalScale: {x: 1, y: 0.994, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -19581,7 +19585,7 @@ Transform:
   m_GameObject: {fileID: 2087826209}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 228.9, y: 3.1000006, z: -10}
+  m_LocalPosition: {x: 3.3999996, y: -0.79999924, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
