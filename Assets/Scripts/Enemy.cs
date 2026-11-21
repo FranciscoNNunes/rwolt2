@@ -22,10 +22,13 @@ public class Enemy : MonoBehaviour
     public GameObject itemParaDropar;
 
     private Animator anim;
+
+    private SpriteRenderer spriteRenderer;
     void Start()
     {
         vidaAtualDoInimigo = vidaMaximaDoInimigo;
         anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         if(player == null)
         {
@@ -48,25 +51,67 @@ public class Enemy : MonoBehaviour
             {
                 SeguirJogador();
             }
+            else
+            {
+                DefinirAnimacaoAndar(false);
+            }
         }
-        
+        else
+        {
+            DefinirAnimacaoAndar(false);
+        }
     }
     private void SeguirJogador()
     {
+        DefinirAnimacaoAndar(true);
+
+        Vector3 posicaoAntiga = transform.position;
+
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, velocidadeDoInimigo * Time.deltaTime);
         if(inimigoVoador)
         {
             transform.position += new Vector3(0, Mathf.Sin(Time.time * 5f) * 0.02f, 0);
         }
+        if(spriteRenderer != null && player != null)
+        {
+        if(player.transform.position.x > transform.position.x)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if (player.transform.position.x < transform.position.x)
+        {
+            spriteRenderer.flipX = true;
+        }
+        }
     }
-   private void OnTriggerEnter2D(Collider2D collision)
-{
+    private void DefinirAnimacaoAndar(bool andando)
+    {
+        if(anim != null && TemParametro("IsWalking"))
+        {
+            anim.SetBool("IsWalking", andando);
+        }
+    }
+    private bool TemParametro(string nomeParametro)
+    {
+        foreach (AnimatorControllerParameter param in anim.parameters)
+        {
+            if(param.name == nomeParametro)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
     if (collision.gameObject.CompareTag("Player"))
     {
         playerLogic playerScript = collision.gameObject.GetComponent<playerLogic>();
         if(playerScript != null)
         {
-        if(anim != null) anim.SetTrigger("Attack");
+        if(anim != null)
+        
+        anim.SetTrigger("Attack");
             
         player.KBCount = player.KBTime;
 
@@ -101,7 +146,7 @@ public class Enemy : MonoBehaviour
                 Instantiate(itemParaDropar,transform.position,Quaternion.identity);
 
             }
-            Destroy(this.gameObject);
+            Destroy(this.gameObject, 0.5f);
         }
         else
         {
