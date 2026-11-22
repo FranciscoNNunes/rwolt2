@@ -6672,28 +6672,8 @@ PrefabInstance:
       value: 3.4599998
       objectReference: {fileID: 0}
     - target: {fileID: 5528832028564412484, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5528832028564412484, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5528832028564412484, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5528832028564412484, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6451398393397568845, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6767254716037868093, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.6
       objectReference: {fileID: 0}
     - target: {fileID: 7530286144167716562, guid: 5433731641c5de24e97de0e47b57c39a, type: 3}
       propertyPath: m_IsActive
