@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6517e9451ebb55a47bfadc6c21b730df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::bulletPBossFinal
-  bulletvelocity: 10
+  bulletvelocity: 20
   danoParaDar: 1
 --- !u!61 &-797571063180235599
 BoxCollider2D:
